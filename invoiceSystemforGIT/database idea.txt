@@ -1,0 +1,60 @@
+1:-Vendor
+	uuid
+	contact person
+	company
+	contact no
+	email
+	address
+	city
+	website url
+	status
+	
+2:-Client
+	uuid
+	contact person
+	company
+	contact no
+	email
+	address
+	city
+	website url
+	status
+
+3:-Purchased Order
+	uuid
+	vendor id
+	client id
+	created date
+	unit(per day/ per hour)
+	rate
+	duration
+	start date
+	end date
+	particulars
+	payment terms
+	purchase order number
+	status
+	
+4:-invoice
+	uuid
+	purchaseorderno
+	invoicedate
+	total
+	
+5:-Expenses
+	uuid
+	expenses type(accommodation/travel/mailing)
+	invoiceno
+	total expense
+	expense date
+	detail
+	
+	
+6:-cheque details
+	uuid
+	cheque no
+	cheque date
+	submit date
+	clear date
+	bank name
+	total amount

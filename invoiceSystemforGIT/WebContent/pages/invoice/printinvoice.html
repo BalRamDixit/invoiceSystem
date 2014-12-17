@@ -1,0 +1,72 @@
+<div id="invoiceMain">
+	<div id="sidepart">
+    	<label>INVOICE</label>
+    </div>
+    <div id="mainpart">
+    	<div id="mainpartupper">
+        	<div id="mainpartupper1">
+        		<div style="float: left;margin-left: 10px;">
+        			<label>InvoiceNo</label>
+        			<input type="text" id="invoiceno" />
+        		</div> 
+            	<div>
+                	<label for="PONO">PONO</label>
+                	<input type="text" id="PONO" placeholder="Purchase Order No" onblur="getdetail()" list="ponolist"/>
+                    <datalist id="ponolist"></datalist>
+                </div>
+            </div>
+            <div id="mainpartupper2">
+            	<div id="mainpartupper21"><label>Date</label> <input type="text" id="sdate" onclick="datechange1()" placeholder="Today Date" /></div>
+                <div id="mainpartupper22"><label>Task Detail</label> <textarea id="task" placeholder="Task Detail" ></textarea></div>
+            </div>
+            <div id="mainpartupper3">
+            	<div>
+                	<table width="100%" border="1" bordercolor="#333333" style="border-style:solid">
+                      <tr style="background-color:#06F;color:#FFF;font-weight:bold;text-align:center;text-transform:uppercase">
+                        <td width="65%">Other Expenses</td>
+                        <td width="20%">Cost</td>
+                        <td width="15%">Inclusive</td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="exp1" class="exp" placeholder="Other Expensive"/></td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value1" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td><input type="checkbox" id="ch1" class="chbox"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="exp2" class="exp" placeholder="Other Expensive"/></td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value2" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td><input type="checkbox" id="ch2" class="chbox"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="exp3" class="exp" placeholder="Other Expensive"/></td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value3" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td><input type="checkbox" id="ch3" class="chbox"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="exp4" class="exp" placeholder="Other Expensive"/></td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value4" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td><input type="checkbox" id="ch4" class="chbox"/></td>
+                      </tr>
+                      <tr>
+                        <td><input type="text" id="exp5" class="exp" placeholder="Other Expensive"/></td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value5" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td><input type="checkbox" id="ch5" class="chbox"/></td>
+                      </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="mainpartupper4">
+            	S Tax@12.36%<input type="number" min="0" id="taxvalue" placeholder="Tax"/>Rs.
+            </div>
+            <div id="mainpartupper5">
+            	Total<input type="number" id="total" min="0" placeholder="Total"/>Rs.
+            </div>
+        </div>
+        
+        <div id="mainpartlower">
+        	<div>
+            	<button id="Get" onclick="insertinvoice()">Get</button>
+            </div>
+        </div>
+    </div>
+</div>

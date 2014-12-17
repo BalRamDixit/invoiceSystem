@@ -1,0 +1,148 @@
+<style>
+#p_main
+{
+	width:550px;
+	background-color:#f9f9f9;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:auto;
+	border-radius:10px;
+	border-color:#777;
+	border-width:10px;
+	margin-right:auto;
+	padding-left:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#p_date
+{
+	font-size:30px;
+	color:#333;
+}
+#todaydate
+{
+	font-size:20px;
+}
+#p_vendor
+{
+	float:left;
+}
+#vendorid , #clientid
+{
+	font-size:16px;
+	width:200px;
+	margin-right:20px;
+	border:#3C3;
+	border:groove;
+	border-radius:20px;
+}
+#rate , #duration 
+{
+	width:100px;
+	font-size:16px;
+	margin-right:10px;
+}
+#p_selectdate
+{
+	float:left;
+}
+#sdate,#edate
+{
+	margin-top:10px;
+	font-size:16px;
+	margin-right:10px;
+}
+#particular ,#pterms
+{
+	width:343px;
+	height:71px;
+	margin-top:10px;
+	font-size:19px;
+}
+#p_pono
+{
+	font-size:16px;
+	font-weight:bolder;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+#p_postatus
+{
+	float:left;
+	margin-right:10px;
+}
+#postatus,#pstatus
+{
+	font-size:16px;
+	width:150px;
+	margin-top:10px;
+	margin-bottom:10px;
+	border:#3C3;
+	border:groove;
+	border-radius:20px;
+}
+#sendButton
+{
+	font-size:16px;
+	margin-left:60px;
+	text-transform:uppercase;
+	border-style:solid;
+	border-radius:10px;
+}
+</style>
+<div id="p_main">
+	<div id="p_pono">
+    	<div><input type="text" id="pono"  placeholder="Purchased Order No"/></div>
+    </div>
+    <div id="p_vendor">
+    	<div><select id="vendorid"><option selected="selected" value="">Select Vendor</option></select></div>
+    </div>
+	<div>
+    	<div><select id="clientid"><option selected="selected" value="">Select Client</option></select></div>
+    </div>
+	<div>
+    	<div>
+        <input type="radio" name="unit" id="unit1" onclick="fun()" />DAY &nbsp; &nbsp;<input type="radio" name="unit" id="unit2" onclick="fun()" />HOUR 
+        &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;ST Extra <input type="checkbox" id="stextra" />
+        <br />
+        <input type="number" id="rate" min="1" placeholder="Rate" onblur="fun()"/> * <input type="number" id="duration"  min="1" placeholder="Duration" onblur="fun()"/>
+        <label id="ans">Total</label>
+		</div>
+    </div>
+    <div id="p_selectdate">
+    	<div><input type="text"  id="sdate"  placeholder="Start Date" onclick="datechange1()"/></div>
+    </div>
+    <div>
+    	<div><input type="text"  id="edate"  placeholder="End Date" onclick="datechange2()"/></div>
+    </div>
+    <div>
+    	<div><textarea id="particular"  placeholder="Particular"></textarea></div>
+    </div>
+    <div>
+    	<div><textarea id="pterms"  placeholder="Payment Terms"></textarea></div>
+    </div>
+    
+    <div id="p_postatus">
+    	<div>
+        	<select id="postatus" >
+            	<option selected="selected" value="">POStatus</option>
+                <option value="a">Active</option>
+                <option value="d">Done</option>
+                <option value="t">To Be Done</option>
+                <option value="c">Cancled</option>
+            </select>
+        </div>
+    </div>
+    <div>
+    	<div><select id="pstatus" >
+            	<option selected="selected" value="">Payment Status</option>
+                <option value="a">Paid</option>
+                <option value="i">In Progress</option>
+                <option value="d">Not Paid</option>
+            </select>
+        </div>
+    </div>
+    <div>
+    	<button id="sendButton" onclick="p_close()" >cancel</button><button id="sendButton" onclick="p_insert()" >save</button>
+    </div>
+</div>
