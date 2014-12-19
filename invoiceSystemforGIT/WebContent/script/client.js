@@ -72,23 +72,5 @@ function c_view()
 
 			//Load person list from server
 			$('#subbody1').jtable('load');
-			subbody2.innerHTML="<a href='pages/pdf/clientlist.jsp' target='_blank'><button> Export to PDF</button></a>";
-}
-function export_client()
-{
-	var ajaxob;
-	if(window.XMLHttpRequest)
-	{
-		ajaxob=new XMLHttpRequest();
-	}
-	ajaxob.onreadystatechange=function()
-	{
-		if (ajaxob.readyState == 4 && ajaxob.status == 200)
-		{
-			
-		}
-	}
-	ajaxob.open("POST", "pages/pdf/clientlist.jsp",true);
-	ajaxob.send();
-	
+			subbody2.innerHTML="<a href='pages/pdf/clientlist.jsp' target='_blank'><button>Export to PDF</button></a>";
 }

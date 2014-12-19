@@ -107,6 +107,12 @@ function p_insert() {
 		} else {
 			utype = 2 + "";
 		}
+		stextra=0+"";
+		if(stextra.checked==true){
+			stextra=1+"";
+		} else {
+			stextra=2+"";
+		}
 
 		var jsonobject = {
 			'vendorid' : vendorid,
@@ -120,7 +126,8 @@ function p_insert() {
 			'pterms' : pterms,
 			'pono' : pono,
 			'postatus' : postatus,
-			'pstatus' : pstatus
+			'pstatus' : pstatus,
+			'stextra' : stextra
 		};
 		var ajaxob;
 		if (window.XMLHttpRequest) {
@@ -141,7 +148,7 @@ function p_close() {
 	p_view();
 }
 function p_view() {
-	subbody.innerHTML = "<div id='subbody1'></div><div id='subbody2'></div><div id='subbody3'></div>";
+	subbody.innerHTML = "<div id='subbody1'></div><div id='subbody2'></div><div id='subbody3'></div><div data-role='popup' id='subbody4'></div>";
 	$('#subbody1').jtable({
 		title : 'Table of people',
 		paging : true,
@@ -233,10 +240,6 @@ function p_view() {
 	subbody2.innerHTML = "<div style='text-align:right;background-color:#fff;border-left-color-value:#c8c8c8'><a href='#' style='text-decoration:none;' onclick='p_create()'>+ Add New Record</a></div>";
 	subbody3.innerHTML = "<a href='pages/pdf/purchaseorderlist.jsp' target='_blank'><button> Export to PDF</button></a>";
 }
-function export_purchaseorder() {
-	window.open('pages/pdf/purchaseorderlist.jsp', 'ExamHOME',
-			'fullscreen=yes', 'resizable=yes,scrollbars=yes');
-}
 function getdate() {
 	var d = new Date();
 	todaydate.innerHTML = d.getDate() + " - " + (d.getMonth() + 1) + " - "
@@ -254,7 +257,6 @@ function fun() {
 }
 function getParticular(uuid)
 {
-	alert(uuid);
 	var ajaxob;
 	if (window.XMLHttpRequest) {
 		ajaxob = new XMLHttpRequest();
@@ -262,7 +264,8 @@ function getParticular(uuid)
 	ajaxob.onreadystatechange = function() {
 		if (ajaxob.readyState == 4 && ajaxob.status == 200) {
 			value = ajaxob.responseText;
-			alert(value);
+			subbody4.innerHTML=value;
+			
 		}
 	}
 	ajaxob.open("POST", "pages/purchase/getParticular.jsp?uuid="

@@ -19,8 +19,9 @@
 	String pono = (String) jb.get("pono");
 	String postatus = (String) jb.get("postatus");
 	String pstatus = (String) jb.get("pstatus");
+	String stextra=(String)jb.get("stextra");
 	boolean status = DbAction.insert_purchase_order(vendorid, clientid,
 			unittype, rate, duration, sdate, edate, particular, pterms,
-			pono, postatus, pstatus);
+			pono, postatus, pstatus,stextra);
 	out.println("hii");
 %>

@@ -22,7 +22,10 @@
 			row.put("vendorname",rs.getString(2));
 			row.put("clientname",rs.getString(3));
 			row.put("createdate",rs.getString(4));
-			row.put("xunit",rs.getString(5));
+			String unit="Hours";
+			if("1".equals(rs.getString(5)))
+				unit="Days";
+			row.put("xunit",unit);
 			row.put("rate",rs.getString(6));
 			row.put("duration",rs.getString(7));
 			row.put("startdate",rs.getString(8));
@@ -30,7 +33,21 @@
 			String particular=rs.getString(10);
 			row.put("particular",DbAction.getFormatedParticularwithLink(particular, rs.getString(1)));
 			row.put("purchaseorderno",rs.getString(12));
-			row.put("paymentstatus",rs.getString(13));
+			String pstatus="";
+			if("a".equals(rs.getString(13)))
+			{
+				pstatus="Done";
+			}
+			else if("d".equals(rs.getString(13)))
+			{
+				pstatus="In progress";
+			}
+			else
+			{
+				pstatus="Not Done";
+			}
+				
+			row.put("paymentstatus",pstatus);
 			rows.put(i,row);
 			i++;
 		}

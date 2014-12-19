@@ -293,10 +293,10 @@ public class DbAction {
 		return status;
 	}
 
-	public static boolean updatepurchaseOrder(String uuid,
-			String unit, String rate, String duration,
-			String createdate, String startdate, String enddate,
-			String particular, String paymentterms, String purchaseorderno) {
+	public static boolean updatepurchaseOrder(String uuid, String unit,
+			String rate, String duration, String createdate, String startdate,
+			String enddate, String particular, String paymentterms,
+			String purchaseorderno) {
 		boolean status = false;
 		try {
 			Connection con = DbConnect.getConnection();
@@ -390,18 +390,17 @@ public class DbAction {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getParticular(String uuid){
-		ResultSet rs=null;
-		try{
-			Connection con=DbConnect.getConnection();
-			String query="select particular,paymentterms from purchaseorder where uuid='"+uuid+"'";
-			Statement st=con.createStatement();
-			rs=st.executeQuery(query);
-		}
-		catch(SQLException ex)
-		{
-			
+
+	public static ResultSet getParticular(String uuid) {
+		ResultSet rs = null;
+		try {
+			Connection con = DbConnect.getConnection();
+			String query = "select particular,paymentterms from purchaseorder where uuid='"
+					+ uuid + "'";
+			Statement st = con.createStatement();
+			rs = st.executeQuery(query);
+		} catch (SQLException ex) {
+
 		}
 		return rs;
 	}
@@ -435,12 +434,12 @@ public class DbAction {
 	public static boolean insert_purchase_order(String vendorid,
 			String clientid, String unittype, String rate, String duration,
 			String sdate, String edate, String particular, String pterms,
-			String pono, String postatus, String pstatus) {
+			String pono, String postatus, String pstatus,String stextra) {
 		boolean status = false;
 		try {
 			Connection con = DbConnect.getConnection();
 			String uuid = uuid_generator.createUUID();
-			String query = "insert into purchaseorder(uuid,vendorid,clientid,createdate,unit,rate,duration,startdate,enddate,particular,paymentterms,purchaseorderno,purchaseorderstatus,paymentstatus) values('"
+			String query = "insert into purchaseorder(uuid,vendorid,clientid,createdate,unit,rate,duration,startdate,enddate,particular,paymentterms,purchaseorderno,purchaseorderstatus,paymentstatus,stextra) values('"
 					+ uuid
 					+ "','"
 					+ vendorid
@@ -463,7 +462,7 @@ public class DbAction {
 					+ "','"
 					+ pono
 					+ "','"
-					+ postatus + "','" + pstatus + "')";
+					+ postatus + "','" + pstatus + "','"+stextra+"')";
 			System.out.println(query);
 			Statement st = con.createStatement();
 			int x = st.executeUpdate(query);
@@ -480,7 +479,7 @@ public class DbAction {
 		ResultSet rs = null;
 		try {
 			Connection con = DbConnect.getConnection();
-			String query = "select p.uuid,v.contactperson,v.company,c.contactperson,c.company,p.createdate,p.unit,p.rate,p.duration,p.startdate,p.enddate from purchaseorder p,vendor v,client c where p.vendorid=v.uuid and p.clientid=c.uuid";
+			String query = "SELECT p.uuid,v.contactperson as vendorname,c.contactperson as clientname ,p.createdate,p.unit as xunit,p.rate,p.duration,p.startdate,p.enddate,p.particular,p.paymentterms,p.purchaseorderno,p.paymentstatus,p.stextra,p.status FROM purchaseorder p,vendor v,client c where p.vendorid=v.uuid and p.clientid=c.uuid and p.status='a'";
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
@@ -491,7 +490,9 @@ public class DbAction {
 
 	public static String getFormatedParticularwithLink(String text, String uuid) {
 		String formated_particular = text.substring(0, 6)
-				+ "<a href='#' onclick='getParticular(\""+uuid+"\")'>..more</a>";
+				+ "<a href='#subbody4' data-rel='popup' class='ui-btn ui-btn-inline ui-corner-all' onclick='getParticular(\"" + uuid
+				+ "\")'>..more</a>";
+		
 		return formated_particular;
 
 	}
