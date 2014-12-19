@@ -5,10 +5,10 @@
 	ResultSet rs=DbAction.getParticular(uuid);
 	if(rs.next())
 	{
-		out.println("PArticular");
-		out.println(rs.getString(1));
+		out.println("<pre><h2>Particular</h2>");
+		out.println("<h3>         "+rs.getString(1)+"</h3>");
 		
-		out.println("PaymentTerms");
-		out.println(rs.getString(2));
+		out.println("<h2>PaymentTerms</h2>");
+		out.println("<h3>         "+rs.getString(2)+"</h3></pre>");
 	}
 %>

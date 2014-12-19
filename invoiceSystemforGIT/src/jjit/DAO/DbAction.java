@@ -489,9 +489,9 @@ public class DbAction {
 	}
 
 	public static String getFormatedParticularwithLink(String text, String uuid) {
-		String formated_particular = text.substring(0, 6)
-				+ "<a href='#subbody4' data-rel='popup' class='ui-btn ui-btn-inline ui-corner-all' onclick='getParticular(\"" + uuid
-				+ "\")'>..more</a>";
+		String formated_particular = "<a href='#' class='popuplink' onclick='getParticular(\"" + uuid
+				+ "\")'>"+text.substring(0, 6)
+				+ "...</a>";
 		
 		return formated_particular;
 

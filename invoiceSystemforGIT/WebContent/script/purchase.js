@@ -148,7 +148,7 @@ function p_close() {
 	p_view();
 }
 function p_view() {
-	subbody.innerHTML = "<div id='subbody1'></div><div id='subbody2'></div><div id='subbody3'></div><div data-role='popup' id='subbody4'></div>";
+	subbody.innerHTML = "<div id='subbody1'></div><div id='subbody2'></div><div id='subbody3'></div><div id='subbody4' class='popup'></div>";
 	$('#subbody1').jtable({
 		title : 'Table of people',
 		paging : true,
@@ -223,7 +223,7 @@ function p_view() {
 			},
 			purchaseorderno : {
 				title : 'Order NO',
-				width : '10%',
+				width : '15%',
 				create : true,
 				edit : true
 			},
@@ -266,6 +266,7 @@ function getParticular(uuid)
 			value = ajaxob.responseText;
 			subbody4.innerHTML=value;
 			
+			$("#subbody4").bPopup();
 		}
 	}
 	ajaxob.open("POST", "pages/purchase/getParticular.jsp?uuid="
