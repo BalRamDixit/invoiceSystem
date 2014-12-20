@@ -51,8 +51,8 @@ create table purchaseorder
 	enddate date,
 	particular varchar(1000),
 	paymentterms varchar(1000),
-	purchasedorerno varchar(32),
-	purchasedstatus varchar(2),
+	purchaseorderno varchar(32),
+	purchasestatus varchar(2),
 	paymentstatus varchar(2),
 	stextra char(1) COMMENT '1-yes;0-no',
 	status varchar(1) default 'a'
@@ -75,6 +75,7 @@ on purchaseorder(vendorid,clientid);
 create table invoice
 (
 	uuid varchar(32),
+    invoiceno varchar(10),
 	purchaseorderno varchar(32),
 	invoicedate date,
 	total int

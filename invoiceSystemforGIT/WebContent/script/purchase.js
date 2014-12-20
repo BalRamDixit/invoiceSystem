@@ -107,11 +107,11 @@ function p_insert() {
 		} else {
 			utype = 2 + "";
 		}
-		stextra=0+"";
+		st=0+"";
 		if(stextra.checked==true){
-			stextra=1+"";
+			st=1+"";
 		} else {
-			stextra=2+"";
+			st=2+"";
 		}
 
 		var jsonobject = {
@@ -127,7 +127,7 @@ function p_insert() {
 			'pono' : pono,
 			'postatus' : postatus,
 			'pstatus' : pstatus,
-			'stextra' : stextra
+			'stextra' : st
 		};
 		var ajaxob;
 		if (window.XMLHttpRequest) {

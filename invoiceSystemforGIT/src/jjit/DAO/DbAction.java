@@ -17,7 +17,7 @@ public class DbAction {
 			result = st.executeQuery(query);
 		} catch (SQLException ex) {
 			System.out
-					.println("Erron in fetching data from client on get_Clients()");
+					.println("Erron in fetching data from client on get_Clients()\n"+ex);
 		}
 		return result;
 	}
@@ -51,7 +51,7 @@ public class DbAction {
 			}
 		} catch (SQLException ex) {
 			System.out
-					.println("Erron in insert data into client on insertclient()");
+					.println("Erron in insert data into client on insertclient()\n"+ex);
 		}
 		return status;
 	}
@@ -73,7 +73,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -90,7 +90,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -106,7 +106,7 @@ public class DbAction {
 				records = rs.getInt(1);
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return records;
 	}
@@ -119,7 +119,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -133,7 +133,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -165,7 +165,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -187,7 +187,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -204,7 +204,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -221,7 +221,7 @@ public class DbAction {
 			}
 
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return counts;
 	}
@@ -235,7 +235,7 @@ public class DbAction {
 			rs = st.executeQuery(query);
 
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -288,7 +288,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -313,7 +313,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -330,7 +330,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -346,7 +346,7 @@ public class DbAction {
 				count = rs.getInt(1);
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return count;
 	}
@@ -373,7 +373,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -386,7 +386,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -400,7 +400,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -413,7 +413,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -426,7 +426,7 @@ public class DbAction {
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}
@@ -439,7 +439,7 @@ public class DbAction {
 		try {
 			Connection con = DbConnect.getConnection();
 			String uuid = uuid_generator.createUUID();
-			String query = "insert into purchaseorder(uuid,vendorid,clientid,createdate,unit,rate,duration,startdate,enddate,particular,paymentterms,purchaseorderno,purchaseorderstatus,paymentstatus,stextra) values('"
+			String query = "insert into purchaseorder(uuid,vendorid,clientid,createdate,unit,rate,duration,startdate,enddate,particular,paymentterms,purchaseorderno,purchasestatus,paymentstatus,stextra) values('"
 					+ uuid
 					+ "','"
 					+ vendorid
@@ -470,7 +470,7 @@ public class DbAction {
 				status = true;
 			}
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return status;
 	}
@@ -479,11 +479,11 @@ public class DbAction {
 		ResultSet rs = null;
 		try {
 			Connection con = DbConnect.getConnection();
-			String query = "SELECT p.uuid,v.contactperson as vendorname,c.contactperson as clientname ,p.createdate,p.unit as xunit,p.rate,p.duration,p.startdate,p.enddate,p.particular,p.paymentterms,p.purchaseorderno,p.paymentstatus,p.stextra,p.status FROM purchaseorder p,vendor v,client c where p.vendorid=v.uuid and p.clientid=c.uuid and p.status='a'";
+			String query = "SELECT p.uuid,v.contactperson as vendorname,c.contactperson as clientname ,p.createdate,p.unit as xunit,p.rate,p.duration,p.startdate,p.enddate,p.particular,p.paymentterms,p.purchasestatus,p.paymentstatus,p.stextra,p.status FROM purchaseorder p,vendor v,client c where p.vendorid=v.uuid and p.clientid=c.uuid and p.status='a'";
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
-
+			System.out.println("Exception is "+ex);
 		}
 		return rs;
 	}

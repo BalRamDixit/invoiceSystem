@@ -10,14 +10,14 @@
         			<input type="text" id="invoiceno" />
         		</div> 
             	<div>
-                	<label for="PONO">PONO</label>
-                	<input type="text" id="PONO" placeholder="Purchase Order No" onblur="getdetail()" list="ponolist"/>
+                	<label for="pono">PONO</label>
+                	<input type="text" id="pono" placeholder="Purchase Order No" onblur="getdetail()" list="ponolist"/>
                     <datalist id="ponolist"></datalist>
                 </div>
             </div>
             <div id="mainpartupper2">
             	<div id="mainpartupper21"><label>Date</label> <input type="text" id="sdate" onclick="datechange1()" placeholder="Today Date" /></div>
-                <div id="mainpartupper22"><label>Task Detail</label> <textarea id="task" placeholder="Task Detail" ></textarea></div>
+                <div id="mainpartupper22" style="text-align: left;"><label>Task Detail</label><div><b>Particular</b></div><div id="particular" style="margin-left:20px"></div><div><b>PaymentTerms</b></div><div id="paymentterms" style="margin-left:20px"></div></div>
             </div>
             <div id="mainpartupper3">
             	<div>
@@ -29,27 +29,27 @@
                       </tr>
                       <tr>
                         <td><input type="text" id="exp1" class="exp" placeholder="Other Expensive"/></td>
-                        <td style="background-color:#CCC;color:#000"><input type="number" id="value1" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value1" class="costbox" min="1" placeholder="0000" onblur="updateTotal(1)"/>Rs.</td>
                         <td><input type="checkbox" id="ch1" class="chbox"/></td>
                       </tr>
                       <tr>
                         <td><input type="text" id="exp2" class="exp" placeholder="Other Expensive"/></td>
-                        <td style="background-color:#CCC;color:#000"><input type="number" id="value2" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value2" class="costbox" min="1" placeholder="0000" onblur="updateTotal(2)"/>Rs.</td>
                         <td><input type="checkbox" id="ch2" class="chbox"/></td>
                       </tr>
                       <tr>
                         <td><input type="text" id="exp3" class="exp" placeholder="Other Expensive"/></td>
-                        <td style="background-color:#CCC;color:#000"><input type="number" id="value3" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value3" class="costbox" min="1" placeholder="0000" onblur="updateTotal(3)"/>Rs.</td>
                         <td><input type="checkbox" id="ch3" class="chbox"/></td>
                       </tr>
                       <tr>
                         <td><input type="text" id="exp4" class="exp" placeholder="Other Expensive"/></td>
-                        <td style="background-color:#CCC;color:#000"><input type="number" id="value4" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value4" class="costbox" min="1" placeholder="0000" onblur="updateTotal(4)"/>Rs.</td>
                         <td><input type="checkbox" id="ch4" class="chbox"/></td>
                       </tr>
                       <tr>
                         <td><input type="text" id="exp5" class="exp" placeholder="Other Expensive"/></td>
-                        <td style="background-color:#CCC;color:#000"><input type="number" id="value5" class="costbox" min="1" placeholder="0000"/>Rs.</td>
+                        <td style="background-color:#CCC;color:#000"><input type="number" id="value5" class="costbox" min="1" placeholder="0000" onblur="updateTotal(5)"/>Rs.</td>
                         <td><input type="checkbox" id="ch5" class="chbox"/></td>
                       </tr>
                     </table>

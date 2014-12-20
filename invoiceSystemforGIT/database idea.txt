@@ -37,6 +37,7 @@
 	
 4:-invoice
 	uuid
+	invoiceno
 	purchaseorderno
 	invoicedate
 	total
