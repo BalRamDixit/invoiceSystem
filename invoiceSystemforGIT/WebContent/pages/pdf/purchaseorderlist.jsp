@@ -1,3 +1,4 @@
+<%@page import="com.itextpdf.text.Element"%>
 <%@page import="java.io.OutputStream"%>
 <%@page import="com.itextpdf.text.PageSize"%>
 <%@page import="com.itextpdf.text.pdf.PdfPCell"%>
@@ -12,12 +13,13 @@
 	Document doc=new Document(PageSize.LETTER.rotate(),100,100,100,100);
 	PdfWriter.getInstance(doc, response.getOutputStream());
 	doc.open();
-	Paragraph p1=new Paragraph("                ---------------- List PurchaseOrders ----------------");
+	Paragraph p1=new Paragraph("---------------- List PurchaseOrders ----------------");
 	float[] widths={2f,3f,3f,3f,3f,3f,3f,3f,3f,3f,3f,3f,3f,3f,3f};
 	PdfPTable table=new PdfPTable(widths);
 	table.setWidthPercentage(110);
 	PdfPCell cell=new PdfPCell(p1);
 	cell.setColspan(15);
+	cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 	table.addCell(cell);
 	table.addCell("S NO");
 	table.addCell("Client Name");//1

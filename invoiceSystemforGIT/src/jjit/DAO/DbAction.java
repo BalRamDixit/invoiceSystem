@@ -368,7 +368,7 @@ public class DbAction {
 		ResultSet rs = null;
 		try {
 			Connection con = DbConnect.getConnection();
-			String query = "SELECT rate*duration as total,stextra,particular,paymentterms,purchaseorderno FROM purchaseorder WHERE status='a' and purchaseorderno = '"
+			String query = "SELECT uuid,rate,duration,stextra,particular,paymentterms,purchaseorderno FROM purchaseorder WHERE status='a' and purchaseorderno = '"
 					+ pono + "'";
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
@@ -382,7 +382,20 @@ public class DbAction {
 		ResultSet rs = null;
 		try {
 			Connection con = DbConnect.getConnection();
-			String query = "SELECT purchaseorderno FROM purchaseorder WHERE status='a'";
+			String query = "SELECT purchaseorderno,paymentterms FROM purchaseorder WHERE status='a'";
+			Statement st = con.createStatement();
+			rs = st.executeQuery(query);
+		} catch (SQLException ex) {
+			System.out.println("Exception is "+ex);
+		}
+		return rs;
+	}
+	
+	public static ResultSet getpurchaseorderlist() {
+		ResultSet rs = null;
+		try {
+			Connection con = DbConnect.getConnection();
+			String query = "SELECT uuid,purchaseorderno,particular FROM purchaseorder WHERE status='a' order by createdate desc";
 			Statement st = con.createStatement();
 			rs = st.executeQuery(query);
 		} catch (SQLException ex) {
@@ -487,10 +500,45 @@ public class DbAction {
 		}
 		return rs;
 	}
+	
+	public static boolean insertInvoice(String invoiceno,String pono,String  sdate,String  taxvalue,String  total) {
+		boolean status = false;
+		try {
+			Connection con = DbConnect.getConnection();
+			String uuid = uuid_generator.createUUID();
+			String query = "insert into invoice(uuid,vendorid,clientid,createdate,unit,rate,duration,startdate,enddate,particular,paymentterms,purchaseorderno,purchasestatus,paymentstatus,stextra) values('"
+					+ uuid
+					+ "','"
+					+ invoiceno
+					+ "','"
+					+ pono
+					+ "','"
+					+ sdate
+					+ "','"
+					+ taxvalue
+					+ "','"
+					+ total
+					+ "')";
+			System.out.println(query);
+			Statement st = con.createStatement();
+			int x = st.executeUpdate(query);
+			if (x > 0) {
+				status = true;
+			}
+		} catch (SQLException ex) {
+			System.out.println("Exception is "+ex);
+		}
+		return status;
+	}
 
 	public static String getFormatedParticularwithLink(String text, String uuid) {
+		String t=text;
+		if(text.length()>6)
+		{
+			t=text.substring(0, 6);
+		}
 		String formated_particular = "<a href='#' class='popuplink' onclick='getParticular(\"" + uuid
-				+ "\")'>"+text.substring(0, 6)
+				+ "\")'>"+t
 				+ "...</a>";
 		
 		return formated_particular;

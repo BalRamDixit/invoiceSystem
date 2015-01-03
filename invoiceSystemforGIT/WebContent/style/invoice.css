@@ -12,20 +12,25 @@
 }
 #sidepart
 {
-	width:75px;
+	width:100px;
 	float:left;
-	height:300px;
-	padding-top:25%;
+	height:600px;
+	padding-top:10px;
 	border-left-color:#333;
 	border-right-color:none;
 	border-top-color:none;
 	border-bottom-color:none;
 	border:groove;
 }
+#polist
+{
+	list-style: none;
+	margin-left: -35px;
+}
 #mainpart
 {
 	width:765px;
-	height:500px;
+	height:580px;
 	margin-left:20px;
 }
 #mainpartupper1
@@ -48,7 +53,6 @@
 }
 #mainpartupper22
 {
-	margin-left:315px;
 	margin-right:30px;	
 	margin-top:10px;
 }
@@ -66,20 +70,31 @@
 }
 #mainpartupper3
 {
-	width:600px;
+	width:750px;
 	text-align:left;
-	margin-left:100px;
+	margin-left:5px;
 	margin-top:10px;
 }
-#mainpartupper4,#mainpartupper5
+#stax
+{
+	font-size: small;
+	
+}
+#mainpartupper4
+{
+	text-align:left;
+	margin-left:397px;
+	margin-top:10px;
+}
+#mainpartupper5,#mainpartupper6
 {
 	text-align:right;
-	margin-right:115px;
+	margin-right:106px;
 	margin-top:10px;
 }
 .exp
 {
-	width:385px;
+	width:350px;
 	font-size:16px;
 	margin-left:5px;
 }
@@ -90,17 +105,25 @@
 }
 .costbox
 {
-	width:70px;
+	width:107px;
 	font-size:16px;
 	margin-left:4px;
 	margin-right:4px;
 }
-#taxvalue ,#total
+.costbox1
 {
-	width:122px;
+	width:140px;
+	font-size:16px;
+	margin-left:-2px;
+	margin-right:4px;
+}
+#taxvalue ,#total,#actualpototal
+{
+	width:130px;
 	font-size:16px;
 	margin-left:10px;
 }
+
 #mainpartlower
 {
 	text-align:right;
@@ -109,5 +132,63 @@
 }
 #get
 {
-	width:100px;
+	
+	text-transform: none;
 }
+
+
+
+.table
+{
+	width:105%;
+	border-color: #333333;
+	border-style: solid;
+}
+.tr
+{
+	background-color: #06f;
+	color:#fff;
+	text-align: center;
+	text-transform: uppercase;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.td
+{
+	float: left;
+}
+.oe
+{
+	width: 64%;
+}
+.cost
+{
+	width: 22%;
+}
+.inc
+{
+	width: 5%;
+	text-align: left;
+}
+.clear
+{
+	clear: both;
+}
+.tabs-list
+{
+	height:21px;
+}
+.tabs-items
+{
+	height:15px;
+	margin-left:10px;
+	width:17px;
+}
+.tabs-link
+{
+	font-size:small;
+	padding-left:4px;
+	padding-top: 0px;
+	width:11px;
+}
+

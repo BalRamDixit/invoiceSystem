@@ -1,228 +1,239 @@
-<?php
-require_once("util/tcpdf_include.php");
+<%@page import="com.itextpdf.text.Element"%>
+<%@page import="com.itextpdf.text.BaseColor"%>
+<%@page import="java.io.OutputStream"%>
+<%@page import="com.itextpdf.text.PageSize"%>
+<%@page import="com.itextpdf.text.pdf.PdfPCell"%>
+<%@page import="jjit.DAO.DbAction"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="com.itextpdf.text.pdf.PdfPTable"%>
+<%@page import="com.itextpdf.text.Paragraph"%>
+<%@page import="com.itextpdf.text.pdf.PdfWriter"%>
+<%@page import="com.itextpdf.text.Document"%>
+<% 
+	response.setContentType("application/pdf");
+	Document doc=new Document(PageSize.A4,50,50,50,50);
+	PdfWriter.getInstance(doc, response.getOutputStream());
+	doc.open();
+	Paragraph p1=new Paragraph("                ---------------- List PurchaseOrders ----------------");
+	
+	
+	//Sub table 1 Design
+	float[] widths1={6f,1f,1.5f,1.5f};
+	PdfPTable subtable1=new PdfPTable(widths1);
+	PdfPCell cell1=new PdfPCell(new Paragraph("DESCRIPTION"));
+	cell1.setBackgroundColor(new BaseColor(0, 102, 255));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	cell1=new PdfPCell(new Paragraph("UNIT"));
+	cell1.setBackgroundColor(new BaseColor(0, 102, 255));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	cell1=new PdfPCell(new Paragraph("RATE"));
+	cell1.setBackgroundColor(new BaseColor(0, 102, 255));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	cell1=new PdfPCell(new Paragraph("AMOUNT"));
+	cell1.setBackgroundColor(new BaseColor(0, 102, 255));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	
+	subtable1.addCell("          ");
+	subtable1.addCell("          ");
+	subtable1.addCell("          ");
+	cell1=new PdfPCell(new Paragraph("          "));
+	cell1.setBackgroundColor(new BaseColor(204,204,204));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	
+	subtable1.addCell("          ");
+	subtable1.addCell("          ");
+	subtable1.addCell("          ");
+	cell1=new PdfPCell(new Paragraph("          "));
+	cell1.setBackgroundColor(new BaseColor(204,204,204));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	
+	subtable1.addCell("          ");
+	subtable1.addCell("          ");
+	subtable1.addCell("          ");
+	cell1=new PdfPCell(new Paragraph("          "));
+	cell1.setBackgroundColor(new BaseColor(204,204,204));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	
+	subtable1.addCell("           ");
+	subtable1.addCell("           ");
+	subtable1.addCell("           ");
+	cell1=new PdfPCell(new Paragraph("           "));
+	cell1.setBackgroundColor(new BaseColor(204,204,204));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	
+	subtable1.addCell("           ");
+	subtable1.addCell("           ");
+	subtable1.addCell("           ");
+	cell1=new PdfPCell(new Paragraph("           "));
+	cell1.setBackgroundColor(new BaseColor(204,204,204));
+	cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable1.addCell(cell1);
+	
+	//Sub table 2 Design
+	float[] widths2={6f};
+	PdfPTable subtable2=new PdfPTable(widths2);
+	PdfPCell cell2=new PdfPCell(new Paragraph("OTHER COMMENTS"));
+	cell2.setBackgroundColor(new BaseColor(0, 102, 255));
+	cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable2.addCell(cell2);
+	subtable2.addCell("1.TOTAL payment due in 30 days");
+	subtable2.addCell("2.please include the invoice number on your cheque");
+	subtable2.addCell("           ");
+	subtable2.addCell("           ");
+	subtable2.addCell("           ");
+	subtable2.addCell("           ");
+	subtable2.addCell("           ");
+	subtable2.addCell("           ");
+	
+	
+	
+	//Sub table 3 Design
+	float[] widths3={1.5f,1.5f};
+	PdfPTable subtable3=new PdfPTable(widths3);
+	
+	
+	subtable3.addCell("TAX RATE");
+	PdfPCell cell3=new PdfPCell(new Paragraph("        "));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable3.addCell(cell3);
 
-// create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+	
+	subtable3.addCell("Tax");
+	cell3=new PdfPCell(new Paragraph("        "));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable3.addCell(cell3);
 
-// set document information
-$pdf->SetCreator('Amanpreet Singh Maini');
-$pdf->SetAuthor('AmanPreet Singh Maini');
-$pdf->SetTitle('Vendors Information');
-$pdf->SetSubject('VEndors');
-$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+	
+	subtable3.addCell("OTHER");
+	cell3=new PdfPCell(new Paragraph("          "));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable3.addCell(cell3);
 
-// set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, '', '');
+	
+	cell3=new PdfPCell(new Paragraph("==============="));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	cell3.setColspan(2);
+	subtable3.addCell(cell3);
 
-// set header and footer fonts
-$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+	
+	subtable3.addCell("TOTAL");
+	cell3=new PdfPCell(new Paragraph("          "));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable3.addCell(cell3);
 
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+	
+	cell3=new PdfPCell(new Paragraph("               "));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	cell3.setColspan(2);
+	subtable3.addCell(cell3);
 
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+	
+	cell3=new PdfPCell(new Paragraph("Make your All Cheque payable To"));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	cell3.setColspan(2);
+	subtable3.addCell(cell3);
 
-// set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+	
+	cell3=new PdfPCell(new Paragraph("[Company Name]"));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	cell3.setColspan(2);
+	subtable3.addCell(cell3);
 
-// set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-// set some language-dependent strings (optional)
-if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
-	$pdf->setLanguageArray($l);
-}
-
-// ---------------------------------------------------------
-
-// set font
-$pdf->SetFont('helvetica', 'B', 20);
-
-// add a page
-$pdf->AddPage();
-
-$pdf->Write(0, 'INVOICE', '', 0, 'L', true, 0, false, false, 0);
-
-$pdf->SetFont('helvetica', '', 8);
-
-// -----------------------------------------------------------------------------
-$curdate=date("j / n / Y");
-$tbl = <<<EOD
-<table width="70%" height="918" border="0">
-  <tr>
-    <td width="70%">&nbsp;</td>
-    <td width="15%">&nbsp;</td>
-    <td width="15%">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="39">[Company Name]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>[Company Slogan]</td>
-    <td colspan="2">Date: &nbsp;&nbsp;&nbsp;$curdate</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td colspan="2">Invoice No [12345]</td>
-  </tr>
-  <tr>
-    <td>[Street Address]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>[city, ST zip]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Phone: [STD - Ph no]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Mob: [xxx-xxx-xxxx]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td><p style="background-color:#06F;color:#FFF;font-weight:bold;text-align:center;text-transform:uppercase;width:50%">BILL TO:</p></td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>[Name]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>[Company Name]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>[Street Address]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>[City, ST zip]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Phone: [STD- Ph no]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Mob: [xxx-xxx-xxxx]</td>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="100px" colspan="3">
-    	<table width="100%" height="100px" border="1" bordercolor="#333333" style="border-style:solid">
-          <tr style="background-color:#06F;color:#FFF;font-weight:bold;text-align:center;text-transform:uppercase">
-            <td width="60%">DESCRIPTION</td>
-            <td width="10%">unit</td>
-            <td width="15%">rate</td>
-            <td width="15%">Amount</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td style="background-color:#CCC;color:#000">&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td style="background-color:#CCC;color:#000">&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td style="background-color:#CCC;color:#000">&nbsp;</td>
-          </tr>
-        </table>
-   	</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>SubTotal</td>
-    <td style="background-color:#CCC;color:#000">&nbsp;</td>
-  </tr>
-  <tr>
-    <td rowspan="8">
-        <table width="100%" height="210" border="1">
-          <tr style="background-color:#06F;color:#FFF;font-weight:bold;text-align:center;text-transform:uppercase">
-            <td width="100%">OTHER COMMENTS</td>
-          </tr>
-          <tr>
-            <td height="24">1.TOTAL payment due in 30 days</td>
-          </tr>
-          <tr>
-            <td height="24"> 2.please include the invoice number on your cheque</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-        </table>
-    </td>
-    <td>TAX RATE</td>
-    <td style="background-color:#CCC;color:#000">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>Tax</td>
-    <td style="background-color:#CCC;color:#000">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>OTHER</td>
-    <td style="background-color:#CCC;color:#000">&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2">======================</td>
-  </tr>
-  <tr>
-    <td>TOTAL</td>
-    <td style="background-color:#CCC;color:#000">&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="2">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="24" colspan="2">Make your All Cheque payable To</td>
-  </tr>
-  <tr>
-    <td height="24" colspan="2">[Company Name]</td>
-  </tr>
-  <tr>
-    <td colspan="3" style="background-color:#CCC;color:#000;text-align:center">If you have any questions about this invoice,please Contact</td>
-  </tr>
-  <tr>
-    <td colspan="3" style="background-color:#CCC;color:#000;text-align:center">[name,Phone no,E-mail]</td>
-  </tr>
-  <tr>
-    <td colspan="3">&nbsp;</td>
-  </tr>
-  <tr>
-    <td colspan="3" style="background-color:#CCC;color:#000;text-align:center">Thank You For Your Business!</td>
-  </tr>
-</table>
-EOD;
-
-$pdf->writeHTML($tbl, true, false, false, false, '');
-//Close and output PDF document
-$pdf->Output('Invoice_no.pdf', 'I');
-?>
+	//Main table Design
+	float[] widths={7f,3f};
+	PdfPTable table=new PdfPTable(widths);
+	table.addCell("[Company Name]");
+	table.addCell("           ");
+	table.addCell("[Company Slogan]");
+	table.addCell("Date:");
+	table.addCell("         ");
+	table.addCell("Invoice No [12345]");
+	table.addCell("[Street Address]");
+	table.addCell("         ");
+	table.addCell("[city, ST zip]");
+	table.addCell("         ");
+	table.addCell("Phone: [STD - Ph no]");
+	table.addCell("         ");
+	table.addCell("Mob: [xxx-xxx-xxxx]");
+	table.addCell("         ");
+	table.addCell("         ");
+	table.addCell("         ");
+	cell3=new PdfPCell(new Paragraph("BILL TO:"));
+	cell3.setBackgroundColor(new BaseColor(0, 102, 255));
+	table.addCell(cell3);
+	table.addCell("         ");
+	table.addCell("[Name]");
+	table.addCell("         ");
+	table.addCell("[Company Name]");
+	table.addCell("         ");
+	table.addCell("[Street Address]");
+	table.addCell("         ");;
+	table.addCell("[City, ST zip]");
+	table.addCell("         ");
+	table.addCell("Phone: [STD- Ph no]");
+	table.addCell("         ");
+	table.addCell("Mob: [xxx-xxx-xxxx]");
+	table.addCell("         ");
+	
+	
+	
+	
+	
+	
+	cell3=new PdfPCell(subtable1);
+	cell3.setColspan(2);
+	table.addCell(cell3);
+	
+	float[] widths5={7f,1.5f,1.5f};
+	PdfPTable subtable4=new PdfPTable(widths5);
+	subtable4.addCell("        ");
+	subtable4.addCell("SubTotal");
+	cell3=new PdfPCell(new Paragraph("          "));
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	subtable4.addCell(cell3);
+	cell3=new PdfPCell(subtable4);
+	cell3.setColspan(2);
+	table.addCell(cell3);
+	
+	table.addCell(subtable2);
+	table.addCell(subtable3);
+	cell3=new PdfPCell(new Paragraph("If you have any questions about this invoice,please Contact"));
+	cell3.setColspan(2);
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	table.addCell(cell3);
+	cell3=new PdfPCell(new Paragraph("[name,Phone no,E-mail]"));
+	cell3.setColspan(2);
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	table.addCell(cell3);
+	cell3=new PdfPCell(new Paragraph("          "));
+	cell3.setColspan(2);
+	table.addCell(cell3);
+	cell3=new PdfPCell(new Paragraph("Thank You For Your Business!"));
+	cell3.setColspan(2);
+	cell3.setBackgroundColor(new BaseColor(204,204,204));
+	cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+	table.addCell(cell3);
+	
+	doc.add(table);
+	
+	doc.close();
+%>

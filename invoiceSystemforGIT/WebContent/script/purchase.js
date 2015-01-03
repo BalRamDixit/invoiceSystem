@@ -150,7 +150,7 @@ function p_close() {
 function p_view() {
 	subbody.innerHTML = "<div id='subbody1'></div><div id='subbody2'></div><div id='subbody3'></div><div id='subbody4' class='popup'></div>";
 	$('#subbody1').jtable({
-		title : 'Table of people',
+		title : 'Purchase Orders',
 		paging : true,
 		pageSize : 10,
 		sorting : true,
@@ -237,7 +237,7 @@ function p_view() {
 	});
 	// Load person list from server
 	$('#subbody1').jtable('load');
-	subbody2.innerHTML = "<div style='text-align:right;background-color:#fff;border-left-color-value:#c8c8c8'><a href='#' style='text-decoration:none;' onclick='p_create()'>+ Add New Record</a></div>";
+	subbody2.innerHTML = "<div style='text-align:right;background-color:#fff;border-left-color-value:#c8c8c8'><a href='#' style='text-decoration:none;' onclick='p_create()'> Add New Record</a></div>";
 	subbody3.innerHTML = "<a href='pages/pdf/purchaseorderlist.jsp' target='_blank'><button> Export to PDF</button></a>";
 }
 function getdate() {

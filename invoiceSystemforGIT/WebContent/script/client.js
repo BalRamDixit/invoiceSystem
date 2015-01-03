@@ -7,7 +7,7 @@ function c_view()
 {
 			subbody.innerHTML="<div id='subbody1'></div><div id='subbody2'></div>";
 			$('#subbody1').jtable({
-				title: 'Table of people',
+				title: 'Table of Clients',
 				paging: true,
 				pageSize: 10,
 				sorting: true,

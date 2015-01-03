@@ -79,9 +79,9 @@
 }
 button
 {
-	height:30px;
-	font-size:20px;
-	text-transform:uppercase;
+	height:20px;
+	font-size:11px;
+	text-transform:capitalize;
 	border-style:solid;
 	border-radius:10px;
 	margin-left:65px;
@@ -90,7 +90,7 @@ button
 {
 	background-color:#f7f7f7;
 	width:85%;
-	height:600px;
+	height:645px;
 	float:left;
 	padding-left:20px;
 	margin-left:50px;
