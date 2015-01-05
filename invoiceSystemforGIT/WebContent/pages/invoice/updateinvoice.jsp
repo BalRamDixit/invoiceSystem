@@ -1,13 +1,13 @@
 <%@page import="java.util.Set"%>
-<%@page import="jjit.POJO.ExpenseBO"%>
-<%@page import="jjit.POJO.PurchaseOrderBO"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.ExpenseBo"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.PurchaseOrderBo"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%
-	PurchaseOrderBO pobean=(PurchaseOrderBO)request.getSession().getAttribute("purchaseOrder");
+	PurchaseOrderBo pobean=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
 	String pototal=pobean.getActotal();
 	System.out.println("actotal is -- "+pototal);
 	String tax=pobean.getTax();
@@ -19,7 +19,7 @@
 	}
 	double inclusiveExpense=0;
 	double exclusiveExpense=0;
-	HashMap<Integer,ExpenseBO> expenses=pobean.getExpenses();
+	HashMap<Integer,ExpenseBo> expenses=pobean.getExpenses();
 	boolean status=false;
 	Set<Integer> keys= expenses.keySet();
 	for(Integer e:keys)

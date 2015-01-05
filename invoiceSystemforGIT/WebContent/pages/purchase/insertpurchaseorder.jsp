@@ -1,7 +1,7 @@
 
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%
 	String data = request.getParameter("data");
 	JSONParser parse = new JSONParser();

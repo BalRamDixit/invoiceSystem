@@ -1,7 +1,7 @@
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="java.sql.ResultSet"%>
 <%
 	ResultSet rs=DbAction.getpurchaseorderlist();

@@ -1,8 +1,8 @@
-<%@page import="jjit.POJO.ExpenseBO"%>
-<%@page import="jjit.POJO.PurchaseOrderBO"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.ExpenseBo"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.PurchaseOrderBo"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%
@@ -12,8 +12,8 @@
 	String exp=(String)jo.get("exp");
 	String val=(String)jo.get("val");
 	String inc=(String)jo.get("inc");
-	PurchaseOrderBO pobean=(PurchaseOrderBO)request.getSession().getAttribute("purchaseOrder");
-	ExpenseBO e=new ExpenseBO();
+	PurchaseOrderBo pobean=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
+	ExpenseBo e=new ExpenseBo();
 	e.setCost(val);
 	e.setDetail(exp);
 	if(inc.equals("true"))
@@ -24,7 +24,7 @@
 	{
 		e.setInclusive(false);
 	}
-	HashMap<Integer,ExpenseBO> ex=pobean.getExpenses();
+	HashMap<Integer,ExpenseBo> ex=pobean.getExpenses();
 	ex.put(ex.size()+1, e);
 	System.out.println("exno-- "+(ex.size())+"     "+e.getDetail()+"      "+e.getCost()+"       "+e.getInclusive());
 %>

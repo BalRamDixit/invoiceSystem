@@ -1,7 +1,7 @@
-<%@page import="jjit.POJO.PurchaseOrderBO"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.PurchaseOrderBo"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%
@@ -9,7 +9,7 @@
 	JSONParser jb=new JSONParser();
 	JSONObject jo=(JSONObject)jb.parse(data);
 	String pono=(String)jo.get("pono");
-	PurchaseOrderBO pobean=(PurchaseOrderBO)request.getSession().getAttribute("purchaseOrder");
+	PurchaseOrderBo pobean=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
 	ResultSet rs=DbAction.getdetailforinvoicebypono(pono);
 	HashMap<String,String> row=new HashMap<String,String>();
 	if(rs.next())

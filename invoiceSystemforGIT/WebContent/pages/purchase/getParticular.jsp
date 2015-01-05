@@ -1,4 +1,4 @@
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="java.sql.ResultSet"%>
 <%
 	String uuid=request.getParameter("uuid");

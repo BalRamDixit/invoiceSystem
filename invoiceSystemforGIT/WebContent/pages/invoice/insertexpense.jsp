@@ -1,16 +1,16 @@
 <%@page import="java.util.Set"%>
-<%@page import="jjit.POJO.ExpenseBO"%>
-<%@page import="jjit.POJO.PurchaseOrderBO"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.ExpenseBo"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.PurchaseOrderBo"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%
 	String action=request.getParameter("action");
-	PurchaseOrderBO pobean=(PurchaseOrderBO)request.getSession().getAttribute("purchaseOrder");
-	HashMap<Integer,ExpenseBO> ex=pobean.getExpenses();
+	PurchaseOrderBo pobean=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
+	HashMap<Integer,ExpenseBo> ex=pobean.getExpenses();
 	if("list".equals(action))
 	{
 		String var1=request.getParameter("jtSorting");
@@ -25,7 +25,7 @@
 		{
 	if(i>=Integer.parseInt(var2))
 	{
-		ExpenseBO expense=ex.get(e);
+		ExpenseBo expense=ex.get(e);
 		HashMap<String,String> row=new HashMap<String,String>();
 		row.put("exno",(i+1)+"");
 		row.put("exp",expense.getDetail());
@@ -56,7 +56,7 @@
 		String cost=request.getParameter("cost");
 		String Inclusive=request.getParameter("Inclusive");
 		
-		ExpenseBO e=ex.get(Integer.parseInt(expno));
+		ExpenseBo e=ex.get(Integer.parseInt(expno));
 		HashMap<String,String> row=new HashMap<String,String>();
 		//Return result to jTable
 		HashMap<String,Object> jTableResult = new HashMap<String,Object>();

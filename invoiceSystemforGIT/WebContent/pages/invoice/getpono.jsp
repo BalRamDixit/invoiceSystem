@@ -1,8 +1,8 @@
-<%@page import="jjit.POJO.PurchaseOrderBO"%>
+<%@page import="com.jjit.pojo.com.jjit.pojo.PurchaseOrderBo"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="java.util.HashMap"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="java.sql.ResultSet"%>
 <%
 	ResultSet rs=DbAction.getpurchaseorderno();
@@ -25,7 +25,7 @@
 		ja.add(i, ob);
 		i++;
 	}
-	PurchaseOrderBO pobean=new PurchaseOrderBO();
+	PurchaseOrderBo pobean=new PurchaseOrderBo();
 	request.getSession(true).setAttribute("purchaseOrder", pobean);
 	out.println(ja);
 %>

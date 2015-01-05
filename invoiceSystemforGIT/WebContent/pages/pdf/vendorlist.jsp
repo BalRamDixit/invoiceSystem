@@ -1,6 +1,6 @@
 <%@page import="com.itextpdf.text.PageSize"%>
 <%@page import="com.itextpdf.text.pdf.PdfPCell"%>
-<%@page import="jjit.DAO.DbAction"%>
+<%@page import="com.jjit.dao.DbAction"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.itextpdf.text.pdf.PdfPTable"%>
 <%@page import="com.itextpdf.text.Paragraph"%>
