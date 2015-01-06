@@ -55,7 +55,8 @@ create table purchaseorder
 	purchasestatus varchar(2),
 	paymentstatus varchar(2),
 	stextra char(1) COMMENT '1-yes;0-no',
-	status varchar(1) default 'a'
+	status varchar(1) default 'a',
+	currency varchar(10)
 	
 );
 alter table purchaseorder 
