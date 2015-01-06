@@ -1,0 +1,72 @@
+<div id="p_main">
+	<div id="p_pono">
+    	<div id="pono1"><input type="text" id="pono"  placeholder="Purchased Order No"/> </div>
+    	<div id="pono2"> Date <input type="text" id="cdate" onclick="datechange3()"/> </div>
+    </div>
+    <div id="p_vendor">
+    	<div><select id="vendorid"><option selected="selected" value="">Select Vendor</option></select></div>
+    </div>
+	<div>
+    	<div><select id="clientid"><option selected="selected" value="">Select Client</option></select></div>
+    </div>
+	<div>
+    	<div> Rate </div>
+    	<div>
+    		<div id="panel1">
+	    		<select id="currency">
+	    			<option selected>INR</option>
+	    			<option>USD</option>
+	    		</select>
+	    		<input type="text" id="rate" onblur="fun(3)"/> PER 
+    		</div>
+    		<div id="panel2">
+    			<input type="radio" name="unit" id="unit1" onclick="fun(1)" />DAY &nbsp; &nbsp;<input type="radio" name="unit" id="unit2" onclick="fun(2)" />HOUR
+    		</div>
+    	</div>
+    	<div>FOR</div>
+    	<div>
+    		<input type="text" id="duration"  min="1" placeholder="Duration" onblur="fun(3)"/><label id="unit"> Days / Hours </label>
+    	</div>
+        <div style="height: 22px">
+        	<div id="st"> Service Tax Inclusive <input type="checkbox" id="stextra" /></div>
+        	<div><label>Total Amt</label> <label id="ans"></label></div>
+		</div>
+    </div>
+    <div id="p_selectdate">
+    	<div><input type="text"  id="sdate"  placeholder="Start Date" onclick="datechange1()"/></div>
+    </div>
+    <div>
+    	<div><input type="text"  id="edate"  placeholder="End Date" onclick="datechange2()"/></div>
+    </div>
+    <div>
+    	<div><textarea id="particular"  placeholder="Particular"></textarea></div>
+    </div>
+    <div>
+    	<div><textarea id="pterms"  placeholder="Payment Terms"></textarea></div>
+    </div>
+    
+    <div id="p_postatus">
+    	<div>
+        	<select id="postatus" >
+            	<option selected="selected" value="">POStatus</option>
+                <option value="a">Active</option>
+                <option value="d">Done</option>
+                <option value="t">To Be Done</option>
+                <option value="c">Canceled</option>
+            </select>
+        </div>
+    </div>
+    <div>
+    	<div><select id="pstatus" >
+            	<option selected="selected" value="">Payment Status</option>
+                <option value="a">Paid</option>
+                <option value="i">In Progress</option>
+                <option value="d">Not Paid</option>
+            </select>
+        </div>
+    </div>
+    <div>
+    	<button id="sendButton" onclick="p_close()" >cancel</button><button id="sendButton" onclick="p_insert()" >save</button>
+    </div>
+</div>
+</div>
