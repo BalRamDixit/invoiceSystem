@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>Invoice System</title>
+<link href="style/purchaseOrder.css" rel="stylesheet" type="text/css" />
+<link href="style/home.css" rel="stylesheet" type="text/css" />
+<link href="style/invoice.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="scripts/client.js"></script>
+<script type="text/javascript" src="scripts/home.js"></script>
+<script type="text/javascript" src="scripts/purchase.js"></script>
+<script type="text/javascript" src="scripts/invoice.js"></script>
+<script type="text/javascript" src="scripts/vendor.js"></script>
+<script type="text/javascript"
+	src="lib/jqdata/scripts/jquery-2.0.2.min.js"></script>
+<script type="text/javascript" src="lib/jqdata/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="lib/jqdata/jqwidgets/jqxmenu.js"></script>
+<link rel="stylesheet" href="lib/jqdata/jqwidgets/styles/jqx.base.css"
+	type="text/css" />
+<link href="lib/themes/redmond/jquery-ui-1.8.16.custom.css"
+	rel="stylesheet" type="text/css" />
+<link href="lib/jtable/themes/lightcolor/blue/jtable.css"
+	rel="stylesheet" type="text/css" />
+<link href="lib/bpopup/bpopup.css" rel="stylesheet" type="text/css" />
+<script src="lib/jquery-ui.js" type="text/javascript"></script>
+<script src="lib/jquery-migrate-1.0.0.js" type="text/javascript"></script>
+<script src="lib/bpopup/jquery.bpopup.min.js" type="text/javascript"></script>
+<script src="lib/jtable/jquery.jtable.js" type="text/javascript"></script>
+<script>
+	 function datechange1()
+	 {
+		 	$( "#sdate" ).datepicker({
+				changeMonth: true,
+				changeYear: true,
+				dateFormat: "dd-mm-yy",
+				showOn: "both",
+				buttonImage: "images/calendar.gif",
+				buttonImageOnly: true,
+				buttonText: "Select date"
+				//one more dummy change !
+			});
+	}
+	function datechange2()
+	{
+		 	$( "#edate" ).datepicker({
+				changeMonth: true,
+				changeYear: true,
+				dateFormat: "dd-mm-yy",
+				showOn: "both",
+				buttonImage: "images/calendar.gif",
+				buttonImageOnly: true,
+				buttonText: "Select date"
+			});
+	}
+	function datechange3()
+	{
+		 	$( "#cdate" ).datepicker({
+				changeMonth: true,
+				changeYear: true,
+				dateFormat: "dd-mm-yy",
+				showOn: "both",
+				buttonImage: "images/calendar.gif",
+				buttonImageOnly: true,
+				buttonText: "Select date"
+			});
+	}
+	</script>
+
+</head>
+<body>
+	<div id="boxes">
+		<div id="contact_modal" class="window"></div>
+		<div id="mask"></div>
+	</div>
+	<div id='content' style="float: left">
+		<script type="text/javascript">
+            $(document).ready(function () {
+                // Create a jqxMenu
+                $("#jqxMenu").jqxMenu({ width: '150', mode: 'vertical'});
+                $("#jqxMenu").css('visibility', 'visible');
+            });
+        </script>
+		<div id='jqxWidget' style='width: 110px;'>
+			<div id='jqxMenu' style="visibility: hidden;">
+				<ul>
+					<li onClick="basic()">Home</li>
+					<li onClick="v_view()">Vendor</li>
+					<li onClick="c_view()">Client</li>
+					<li onClick="p_view()">purchase Order</li>
+					<li onClick="i_view()">Invoice</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="subbody" id="subbody">
+		<div id="subbody1"></div>
+		<div id="subbody2"></div>
+	</div>
+</body>
+</html>

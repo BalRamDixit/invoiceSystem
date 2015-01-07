@@ -1,0 +1,126 @@
+#p_main
+{
+	width:440px;
+	background-color:#f9f9f9;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:auto;
+	border-radius:10px;
+	border-color:#777;
+	border-width:10px;
+	margin-right:auto;
+	padding-left:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+#p_date
+{
+	font-size:30px;
+	color:#333;
+}
+#todaydate
+{
+	font-size:20px;
+}
+#p_vendor
+{
+	float:left;
+}
+#vendorid , #clientid
+{
+	font-size:16px;
+	width:200px;
+	margin-right:20px;
+	border:#3C3;
+	border:groove;
+	border-radius:20px;
+}
+#rate , #duration 
+{
+	width:100px;
+	font-size:16px;
+	margin-right:10px;
+}
+#p_selectdate
+{
+	float:left;
+}
+#sdate,#edate
+{
+	margin-top:10px;
+	font-size:13px;
+	margin-left: 10px;
+}
+#particular ,#pterms
+{
+	width:343px;
+	height:71px;
+	margin-top:10px;
+	font-size:19px;
+}
+#p_pono
+{
+	font-size:16px;
+	font-weight:bolder;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+#pono1
+{
+	float:left;
+	margin-right: 10px;
+}
+#pono2
+{
+	text-align: right;
+	margin-right: 43px;
+}
+#p_postatus
+{
+	float:left;
+	margin-right:10px;
+}
+#postatus,#pstatus
+{
+	font-size:16px;
+	width:150px;
+	margin-top:10px;
+	margin-bottom:10px;
+	border:#3C3;
+	border:groove;
+	border-radius:20px;
+}
+#sendButton
+{
+	font-size:16px;
+	margin-left:60px;
+	text-transform:uppercase;
+	border-style:solid;
+	border-radius:10px;
+}
+#currency
+{
+	height:26px;
+	width:52px;
+}
+#panel1
+{
+	float: left;
+	height:25px;
+	margin-bottom: 10px;
+}
+#panel2
+{
+	border-style: solid;
+	border-color: #804040;
+	height:21px;
+	margin-left:225px;
+	padding-left:21px;	
+	margin-right:20px;
+	margin-bottom: 10px;
+}
+#st
+{
+	float:left;
+	margin-right:40px;
+}
