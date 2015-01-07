@@ -1,8 +1,7 @@
-package com.jjit.servlet.purchaseorder;
+package com.jjit.servlet.Invoice;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -11,22 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
-import com.jjit.dao.PurchaseOrderDao;
+import com.jjit.dao.InvoiceDao;
+import com.jjit.pojo.ExpenseBo;
+import com.jjit.pojo.PurchaseOrderBo;
 
 /**
- * Servlet implementation class VendorList
+ * Servlet implementation class InvoiceInsert
  */
-@WebServlet("/VendorList")
-public class VendorList extends HttpServlet {
+@WebServlet("/InvoiceInsert")
+public class InvoiceInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VendorList() {
+    public InvoiceInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,21 +35,19 @@ public class VendorList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
 		try {
-			ResultSet rs = PurchaseOrderDao.get_vendorsforpo();
-			JSONArray ja = new JSONArray();
-			int i = 0;
-			while (rs.next()) {
-				HashMap<String, String> row = new HashMap<String, String>();
-				String uuid = rs.getString("uuid");
-				String contactperson = rs.getString("contactperson");
-				String email = rs.getString("email");
-				String city = rs.getString("city");
-				row.put("uuid", uuid);
-				row.put("contactperson", contactperson + " - " + city);
-				JSONObject jb = new JSONObject(row);
-				ja.add(i, jb);
-			}
-			out.println(ja);
+			String data = request.getParameter("data");
+			JSONParser jb=new JSONParser();
+			JSONObject jo=(JSONObject)jb.parse(data);
+			String invoiceno=(String)jo.get("invoiceno");
+			String pono=(String)jo.get("pono");
+			String sdate=(String)jo.get("sdate");
+			String taxvalue=(String)jo.get("taxvalue");
+			String total=(String)jo.get("total");
+			PurchaseOrderBo purchasebo=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
+			String uuid=purchasebo.getUuid();
+			HashMap<Integer, ExpenseBo> expenses=purchasebo.getExpenses();
+			String invoiceuuid=InvoiceDao.insertInvoice(invoiceno, uuid, sdate, taxvalue, total);
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

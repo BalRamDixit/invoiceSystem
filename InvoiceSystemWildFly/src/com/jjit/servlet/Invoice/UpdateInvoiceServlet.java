@@ -20,13 +20,13 @@ import com.jjit.pojo.PurchaseOrderBo;
  * Servlet implementation class UpdateInvoice
  */
 @WebServlet("/UpdateInvoice")
-public class UpdateInvoice extends HttpServlet {
+public class UpdateInvoiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateInvoice() {
+    public UpdateInvoiceServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

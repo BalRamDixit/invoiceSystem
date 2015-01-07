@@ -1,4 +1,4 @@
-package com.jjit.servlet.client;
+package com.jjit.servlet.vendor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,22 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import com.jjit.dao.ClientDao;
+import com.jjit.dao.VendorDao;
+
 
 /**
- * Servlet implementation class ClientInfo
+ * Servlet implementation class VendorInfo
  */
-@WebServlet("/ClientInfo")
-public class ClientInfo extends HttpServlet {
+@WebServlet("/VendorInfo")
+public class VendorInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClientInfo() {
+    public VendorInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
 		try {
@@ -38,8 +40,8 @@ public class ClientInfo extends HttpServlet {
 				String var1=request.getParameter("jtSorting");
 				String var2=request.getParameter("jtStartIndex");
 				String var3=request.getParameter("jtPageSize");
-				int recordCount =ClientDao.get_clients_count();
-				ResultSet rs=ClientDao.get_clients(var1,var2,var3);
+				int recordcount = VendorDao.get_vendors_count();
+				ResultSet rs = VendorDao.get_vendors(var1,var2,var3);
 				HashMap<Integer,Object> rows=new HashMap<Integer,Object>();
 				int i=0;
 				while(rs.next())
@@ -58,7 +60,7 @@ public class ClientInfo extends HttpServlet {
 				}
 				HashMap<String,Object> jTableResult = new HashMap<String,Object>();
 				jTableResult.put("Result", "OK");
-				jTableResult.put("TotalRecordCount",recordCount);
+				jTableResult.put("TotalRecordCount",recordcount);
 				jTableResult.put("Records" ,rows);
 				JSONObject jb=new JSONObject(jTableResult);
 				out.println(jb);
@@ -66,6 +68,7 @@ public class ClientInfo extends HttpServlet {
 			else if("create".equals(action))
 			{
 				//Insert record into database
+				System.out.println("hiii");
 				String clientname=request.getParameter("contactperson");
 				String companyname=request.getParameter("company");
 				String contectno=request.getParameter("contactno");
@@ -73,9 +76,9 @@ public class ClientInfo extends HttpServlet {
 				String address=request.getParameter("address");
 				String city=request.getParameter("city");
 				String url=request.getParameter("url");
-				boolean status=ClientDao.insertclient(clientname,companyname,contectno,email,address,city,url);
+				boolean status=VendorDao.insertvendor(clientname,companyname,contectno,email,address,city,url);
 				//Get last inserted record (to return to jTable)
-				ResultSet rs = ClientDao.get_clients_lastrecord();
+				ResultSet rs = VendorDao.get_vendors_lastrecord();
 				HashMap<String,String> row=new HashMap<String,String>();
 				while(rs.next())
 				{
@@ -105,7 +108,7 @@ public class ClientInfo extends HttpServlet {
 				String address=request.getParameter("address");
 				String city=request.getParameter("city");
 				String url=request.getParameter("url");
-				boolean status = ClientDao.updateclient(uuid,clientname,companyname,contectno,email,address,city,url);
+				boolean status = VendorDao.updatevendor(uuid,clientname,companyname,contectno,email,address,city,url);
 
 				//Return result to jTable
 				HashMap<String,Object> jTableResult = new HashMap<String,Object>();
@@ -118,7 +121,7 @@ public class ClientInfo extends HttpServlet {
 			{
 				//Delete from database
 				String uuid=request.getParameter("uuid");
-				boolean result =ClientDao.deleteclient(uuid);
+				boolean result =VendorDao.deletevendor(uuid);
 				//Return result to jTable
 				HashMap<String,Object> jTableResult = new HashMap<String,Object>();
 				jTableResult.put("Result","OK");

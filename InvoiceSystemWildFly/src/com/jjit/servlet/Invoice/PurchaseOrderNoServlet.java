@@ -2,6 +2,7 @@ package com.jjit.servlet.Invoice;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -10,24 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import com.jjit.dao.InvoiceDao;
-import com.jjit.pojo.ExpenseBo;
-import com.jjit.pojo.PurchaseOrderBo;
 
 /**
- * Servlet implementation class InvoiceInsert
+ * Servlet implementation class PurchaseOrderNo
  */
-@WebServlet("/InvoiceInsert")
-public class InvoiceInsert extends HttpServlet {
+@WebServlet("/PurchaseOrderNo")
+public class PurchaseOrderNoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InvoiceInsert() {
+    public PurchaseOrderNoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,19 +34,28 @@ public class InvoiceInsert extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
 		try {
-			String data = request.getParameter("data");
-			JSONParser jb=new JSONParser();
-			JSONObject jo=(JSONObject)jb.parse(data);
-			String invoiceno=(String)jo.get("invoiceno");
-			String pono=(String)jo.get("pono");
-			String sdate=(String)jo.get("sdate");
-			String taxvalue=(String)jo.get("taxvalue");
-			String total=(String)jo.get("total");
-			PurchaseOrderBo purchasebo=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
-			String uuid=purchasebo.getUuid();
-			HashMap<Integer, ExpenseBo> expenses=purchasebo.getExpenses();
-			String invoiceuuid=InvoiceDao.insertInvoice(invoiceno, uuid, sdate, taxvalue, total);
+			ResultSet rs=InvoiceDao.getpurchaseorderno();
+			HashMap<Integer,Object> rows=new HashMap<Integer,Object>();
+			JSONArray ja=new JSONArray();
+			int i=0;
+			while(rs.next())
+			{
+				HashMap<String,String> row=new HashMap<String,String>();
+				String purchaseorderno=rs.getString("purchaseorderno");
+				String paymentterms=rs.getString("paymentterms");
+				String pterms=paymentterms;
+				if(paymentterms.length()>6)
+				{
+					pterms=paymentterms.substring(0,6);
+				}
+				row.put("purchaseorderno",purchaseorderno);
+				row.put("paymentterms",pterms);
+				JSONObject ob=new JSONObject(row);
+				ja.add(i, ob);
+				i++;
+			}
 			
+			out.println(ja);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

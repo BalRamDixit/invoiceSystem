@@ -20,13 +20,13 @@ import com.jjit.dao.PurchaseOrderDao;
  * Servlet implementation class ClientList
  */
 @WebServlet("/ClientList")
-public class ClientList extends HttpServlet {
+public class ClientListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ClientList() {
+    public ClientListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

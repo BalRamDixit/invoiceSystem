@@ -19,13 +19,13 @@ import com.jjit.dao.UuidGenerator;
  * Servlet implementation class InsertPurchaseOrder
  */
 @WebServlet("/InsertPurchaseOrder")
-public class InsertPurchaseOrder extends HttpServlet {
+public class InsertPurchaseOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InsertPurchaseOrder() {
+    public InsertPurchaseOrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

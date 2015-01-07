@@ -9,7 +9,8 @@
 				</div>
 				<div style="float: left; margin-left: 50px;">
 					<label>Date</label> <input type="text" id="sdate"
-						onclick="datechange1()" placeholder="Today Date" style="margin-top:0px;"/>
+						onclick="datechange1()" placeholder="Today Date"
+						style="margin-top: 0px;" />
 				</div>
 				<div style="margin-left: 10px;">
 					<label>InvoiceNo</label> <input type="text" id="invoiceno" />
@@ -29,8 +30,8 @@
 							Order Cost</div>
 						<div class="td cost"
 							style="background-color: #CCC; color: #000; width: 32%; text-align: left">
-							<label class="currency">INR</label><input type="number" id="pototal" class="costbox1" min="1"
-								placeholder="0000" />
+							<label class="currency">INR</label><input type="number"
+								id="pototal" class="costbox1" min="1" placeholder="0000" />
 						</div>
 						<div class="clear"></div>
 					</div>
@@ -43,15 +44,17 @@
 				</div>
 			</div>
 			<div id="mainpartupper4">
-				S Tax@12.36% <label class="currency">INR</label><input type="number" min="0" id="taxvalue"
-					placeholder="Tax" /> <span id="stax"> </span>
+				S Tax@12.36% <label class="currency">INR</label><input type="number"
+					min="0" id="taxvalue" placeholder="Tax" /> <span id="stax">
+				</span>
 			</div>
 			<div id="mainpartupper6">
-				Purchase Order Value <label class="currency">INR</label><input type="number" min="0" id="actualpototal"
-					placeholder="POTotal" />
+				Purchase Order Value <label class="currency">INR</label><input
+					type="number" min="0" id="actualpototal" placeholder="POTotal" />
 			</div>
 			<div id="mainpartupper5">
-				Total <label class="currency">INR</label><input type="number" id="total" min="0" placeholder="Total" />
+				Total <label class="currency">INR</label><input type="number"
+					id="total" min="0" placeholder="Total" />
 			</div>
 		</div>
 		<div id="mainpartlower">
@@ -61,33 +64,29 @@
 		</div>
 	</div>
 </div>
-	<div class="popup" id="dialog">
-		<div>
-			<div class="tr">
-				<div>
-					Other Expenses
-				</div>
-				<div>
-					<input type="text" id="exp" class="exp" placeholder="Other Expensive"/>
-				</div>
-				<div>
-					Cost
-				</div>
-				<div>
-					<label class="currency">INR</label> <input type="number" id="value" class="costbox" min="1" placeholder="0000"/>
-				</div>
-				<div>
-					Inclusive
-				</div>
-				<div>
-					<select id="inclusive">
-						<option value="true" selected>Yes</option>
-						<option value="false">No</option>
-					</select>
-				</div>
-				<div>
-					<button onclick="insertExpense()">Add</button>
-				</div>
+<div class="popup" id="dialog">
+	<div>
+		<div class="tr">
+			<div>Other Expenses</div>
+			<div>
+				<input type="text" id="exp" class="exp"
+					placeholder="Other Expensive" />
+			</div>
+			<div>Cost</div>
+			<div>
+				<label class="currency">INR</label> <input type="number" id="value"
+					class="costbox" min="1" placeholder="0000" />
+			</div>
+			<div>Inclusive</div>
+			<div>
+				<select id="inclusive">
+					<option value="true" selected>Yes</option>
+					<option value="false">No</option>
+				</select>
+			</div>
+			<div>
+				<button onclick="insertExpense()">Add</button>
 			</div>
 		</div>
 	</div>
+</div>
