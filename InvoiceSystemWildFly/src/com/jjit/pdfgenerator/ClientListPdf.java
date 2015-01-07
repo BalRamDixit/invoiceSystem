@@ -1,7 +1,6 @@
 package com.jjit.pdfgenerator;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 
 import javax.servlet.ServletException;

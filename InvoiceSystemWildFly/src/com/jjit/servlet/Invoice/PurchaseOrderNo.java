@@ -15,7 +15,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import com.jjit.dao.InvoiceDao;
-import com.jjit.pojo.PurchaseOrderBo;
 
 /**
  * Servlet implementation class PurchaseOrderNo
