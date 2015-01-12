@@ -54,7 +54,13 @@ public class PurchaseOrderNoServlet extends HttpServlet {
 				ja.add(i, ob);
 				i++;
 			}
-			
+//			String[] etype=ExpenseTypes.getExpenseTypes();
+//			HashMap<String,String> expenseType=new HashMap<String,String>();
+//			for(int j=0;j<etype.length;j++)
+//			{
+//				expenseType.put("expen"+j, etype[j]);
+//			}
+//			ja.add(i,expenseType);
 			out.println(ja);
 		} catch (Exception e) {
 			// TODO: handle exception
