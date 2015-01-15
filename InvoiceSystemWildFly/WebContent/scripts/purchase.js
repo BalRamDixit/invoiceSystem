@@ -1,9 +1,8 @@
 // JavaScript Document
-var showbpopup=0;
+var showbpopup = 0;
 function p_create() {
 	getNewPurchaseOrder();
-	
-	
+
 }
 function get_vendors() {
 	var ajaxob;
@@ -15,7 +14,7 @@ function get_vendors() {
 			value = ajaxob.responseText;
 			var obj = JSON.parse(value);
 			var select = document.getElementById("vendorid");
-			select.innerHTML="<option value=''>Select Vendor</option>";
+			select.innerHTML = "<option value=''>Select Vendor</option>";
 			for (i = 0; i < obj.length; i++) {
 				var option = document.createElement("option");
 				option.text = obj[i].contactperson;
@@ -37,7 +36,7 @@ function get_clients() {
 			value = ajaxob.responseText;
 			var obj = JSON.parse(value);
 			var select = document.getElementById("clientid");
-			select.innerHTML="<option value=''>Select Client</option>";
+			select.innerHTML = "<option value=''>Select Client</option>";
 			for (i = 0; i < obj.length; i++) {
 				var option = document.createElement("option");
 				option.text = obj[i].contactperson;
@@ -65,12 +64,12 @@ function p_insert() {
 	var unit1 = document.getElementById("unit1");
 	var unit2 = document.getElementById("unit2");
 	var stextra = document.getElementById("stextra");
-	var currency=document.getElementById("currency").value;
+	var currency = document.getElementById("currency").value;
 	if (pono == "") {
-			alert("Purchased Order Number should not be Blank");
-	}else if (cdate == "") {
+		alert("Purchased Order Number should not be Blank");
+	} else if (cdate == "") {
 		alert("Current date Should not be blank");
-	}else if (vendorid == "") {
+	} else if (vendorid == "") {
 		alert("Select A vendor");
 	} else if (clientid == "") {
 		alert("select a client");
@@ -99,11 +98,11 @@ function p_insert() {
 		} else {
 			utype = 2 + "";
 		}
-		st=0+"";
-		if(stextra.checked==true){
-			st=1+"";
+		st = 0 + "";
+		if (stextra.checked == true) {
+			st = 1 + "";
 		} else {
-			st=2+"";
+			st = 2 + "";
 		}
 
 		var jsonobject = {
@@ -112,7 +111,7 @@ function p_insert() {
 			'unittype' : utype,
 			'rate' : rate,
 			'duration' : duration,
-			'cdate':cdate,
+			'cdate' : cdate,
 			'sdate' : sdate,
 			'edate' : edate,
 			'particular' : particular,
@@ -120,7 +119,7 @@ function p_insert() {
 			'pono' : pono,
 			'postatus' : postatus,
 			'pstatus' : pstatus,
-			'currency':currency,
+			'currency' : currency,
 			'stextra' : st
 		};
 		var ajaxob;
@@ -140,13 +139,12 @@ function p_insert() {
 }
 function p_close() {
 	$("#porder").bPopup().close();
-	$("#porder" ).remove();
-	porder1.innerHTML="<div id='porder' class='popup'></div>";
+	$("#porder").remove();
+	porder1.innerHTML = "<div id='porder' class='popup'></div>";
 }
-function pCloseAfterSave()
-{
+function pCloseAfterSave() {
 	$("#porder").bPopup().close();
-	$("#porder" ).remove();
+	$("#porder").remove();
 	p_view();
 }
 function p_view() {
@@ -244,17 +242,15 @@ function p_view() {
 }
 function getcdate() {
 	var d = new Date();
-	var f1=d.getDate();
-	if(parseInt(d.getDate())<10)
-	{
-		f1="0"+d.getDate();
+	var f1 = d.getDate();
+	if (parseInt(d.getDate()) < 10) {
+		f1 = "0" + d.getDate();
 	}
-	var f2=d.getMonth() + 1;
-	if(parseInt(d.getMonth() + 1)<10)
-	{
-		f2="0"+(d.getMonth() + 1);
+	var f2 = d.getMonth() + 1;
+	if (parseInt(d.getMonth() + 1) < 10) {
+		f2 = "0" + (d.getMonth() + 1);
 	}
-	document.getElementById("cdate").value =  f1+ "-" + f2+ "-"
+	document.getElementById("cdate").value = f1 + "-" + f2 + "-"
 			+ d.getFullYear();
 }
 function fun(x) {
@@ -266,19 +262,15 @@ function fun(x) {
 	} else {
 		ans.innerHTML = "";
 	}
-	if(x==1)
-	{
-		unit.innerHTML="Days";
+	if (x == 1) {
+		unit.innerHTML = "Days";
+	} else if (x == 2) {
+		unit.innerHTML = "Hours";
 	}
-	else if(x==2)
-	{
-		unit.innerHTML="Hours";
-	}
-		
+
 }
-function getNewPurchaseOrder()
-{
-	porder1.innerHTML="<div id='porder' class='popup'></div>";
+function getNewPurchaseOrder() {
+	porder1.innerHTML = "<div id='porder' class='popup'></div>";
 	var ajaxob;
 	if (window.XMLHttpRequest) {
 		ajaxob = new XMLHttpRequest();
@@ -286,7 +278,7 @@ function getNewPurchaseOrder()
 	ajaxob.onreadystatechange = function() {
 		if (ajaxob.readyState == 4 && ajaxob.status == 200) {
 			value = ajaxob.responseText;
-			porder.innerHTML=value;
+			porder.innerHTML = value;
 			datechange1();
 			datechange2();
 			datechange3();
@@ -294,19 +286,18 @@ function getNewPurchaseOrder()
 			get_clients();
 			getcdate();
 			$("#porder").bPopup({
-				modalClose: false,
-				opacity: 0.6,
-		        positionStyle: 'fixed', //'fixed' or 'absolute'
-		        modalColor: 'greenYellow',
-		        fadeSpeed: 'slow'
-		    });
+				modalClose : false,
+				opacity : 0.6,
+				positionStyle : 'fixed', // 'fixed' or 'absolute'
+				modalColor : 'greenYellow',
+				fadeSpeed : 'slow'
+			});
 		}
 	}
 	ajaxob.open("GET", "pages/purchase/newpurchaseorder.html", true);
 	ajaxob.send();
 }
-function getParticular(uuid)
-{
+function getParticular(uuid) {
 	var ajaxob;
 	if (window.XMLHttpRequest) {
 		ajaxob = new XMLHttpRequest();
@@ -314,11 +305,10 @@ function getParticular(uuid)
 	ajaxob.onreadystatechange = function() {
 		if (ajaxob.readyState == 4 && ajaxob.status == 200) {
 			value = ajaxob.responseText;
-			subbody4.innerHTML=value;
+			subbody4.innerHTML = value;
 			$("#subbody4").bPopup();
 		}
 	}
-	ajaxob.open("POST", "ParticularInfo?uuid="
-			+ uuid, true);
+	ajaxob.open("POST", "ParticularInfo?uuid=" + uuid, true);
 	ajaxob.send();
 }

@@ -20,14 +20,14 @@ import com.jjit.pojo.PurchaseOrderBo;
 /**
  * Servlet implementation class InvoiceInsert
  */
-@WebServlet("/InvoiceInsert")
-public class InvoiceInsertServlet extends HttpServlet {
+@WebServlet("/InvoicePreviewInsert")
+public class InvoicePreviewInsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InvoiceInsertServlet() {
+    public InvoicePreviewInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,7 +46,7 @@ public class InvoiceInsertServlet extends HttpServlet {
 			PurchaseOrderBo purchasebo=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
 			String uuid=purchasebo.getUuid();
 			HashMap<Integer, ExpenseBo> expenses=purchasebo.getExpenses();
-			String invoiceuuid=InvoiceDao.insertInvoice(invoiceno, uuid, sdate, taxvalue, total);
+			 
 			
 		} catch (Exception e) {
 			// TODO: handle exception

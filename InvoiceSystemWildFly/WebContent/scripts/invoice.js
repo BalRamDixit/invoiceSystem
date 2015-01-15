@@ -133,7 +133,7 @@ function insertinvoice() {
 				value = ajaxob.responseText;
 			}
 		}
-		ajaxob.open("POST", "InvoiceInsert?data="
+		ajaxob.open("POST", "InvoicepreviewInsert?data="
 				+ JSON.stringify(jsonobject), true);
 		ajaxob.send();
 	}

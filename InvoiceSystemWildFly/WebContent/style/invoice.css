@@ -159,7 +159,7 @@
 {
 	background-color: #06f;
 	color:#fff;
-	text-align: center;
+	text-align: left;
 	text-transform: uppercase;
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -203,3 +203,175 @@
 	width:11px;
 }
 
+
+
+
+//preview invoice Css
+
+#mainbody-invoice
+{
+	background-color: lime;
+	width:80%;
+	margin-left: auto;
+	margin-right: auto;
+	height:700px;
+	padding-top:10px;
+	padding-left:10px;
+	padding-right:10px;
+}
+#line1
+{
+	margin-right:5px;
+	margin-left:5px;
+}
+#line1-1
+{
+	float: left;
+	margin-right:5px;
+	margin-left:5px;
+}
+#line1-2
+{
+	text-align: right;
+	margin-left:5px;
+	margin-right:5px;
+}
+.lbl
+{
+	padding-left:10px;
+	padding-right:10px;
+	vertical-align: top;
+	margin-top:5px;
+}
+#line2
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#line2-1
+{
+	float: left;
+	margin-right:5px;
+	margin-left:5px;
+}
+#line2-2
+{
+	text-align: right;
+	margin-left:5px;
+	margin-right:5px;
+}
+#img
+{
+	height:25px;
+	width:25px;
+}
+#line3
+{
+	margin-right:5px;
+	margin-left:5px;
+	vertical-align: super;
+	margin-top:8px;
+}
+.txtarea
+{
+	width: 336px; 
+	height: 70px;
+}
+#line4
+{
+	margin-left:5px;
+	margin-right:5px;
+}
+.myphone
+{
+	margin-left:12px;
+}
+#line5
+{
+	background-color: #06f;
+	font-size:25px; 
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#line6
+{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+#bperson
+{
+	margin-left:19px;
+}
+#line7
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#line8
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#line9
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#line10
+{
+	background-color: #06f;
+	font-size:25px; 
+}
+#line11
+{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#expense-table
+{
+	
+}
+#line12
+{
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 10px;
+}
+#line12-col1
+{
+	float: left;
+	height:116px;
+	width:70%;
+	background-color: white;
+}
+#commentbtn
+{
+	text-align: right
+}
+#line12-col2
+{
+	text-align: right;
+}
+#line13
+{
+	background-color: #004444;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+#line13-row1
+{
+	text-transform: uppercase;
+	margin-left:69%
+	
+}
+#line13-row2
+{
+	margin-left: 69%;
+}
+#line14
+{
+	background-color: #004444;
+	margin-left: 5px;
+	margin-right: 5px;
+}
