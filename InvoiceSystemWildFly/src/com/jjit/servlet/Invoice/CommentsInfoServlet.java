@@ -12,31 +12,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
 import com.jjit.pojo.ExpenseBo;
 import com.jjit.pojo.PurchaseOrderBo;
 
 /**
- * Servlet implementation class ExpenseInfo
+ * Servlet implementation class CommentsInfoServlet
  */
-@WebServlet("/ExpenseInfo")
-public class ExpenseInfoServlet extends HttpServlet {
+@WebServlet("/CommentsInfo")
+public class CommentsInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ExpenseInfoServlet() {
+    public CommentsInfoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out=response.getWriter();
 		try {
 			String action=request.getParameter("action");
 			PurchaseOrderBo pobean=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
-			HashMap<Integer,ExpenseBo> ex=pobean.getExpenses();
+			HashMap<Integer,String> ex=pobean.getComments();
 			if("list".equals(action))
 			{
 				String var2=request.getParameter("jtStartIndex");
@@ -50,12 +52,12 @@ public class ExpenseInfoServlet extends HttpServlet {
 				{
 					if(i>=Integer.parseInt(var2)&&i<Integer.parseInt(var2)+Integer.parseInt(var3))
 					{
-						ExpenseBo expense=ex.get(e);
+						String expense=ex.get(e);
 						HashMap<String,String> row=new HashMap<String,String>();
-						row.put("exno",(i+1)+"");
-						row.put("exp",expense.getDetail());
-						row.put("cost",expense.getCost());
-						row.put("Inclusive",expense.getInclusive()+"");
+						row.put("cno",(i+1)+"");
+						row.put("sno",(i+1)+"");
+						row.put("comment",ex.get(e));
+						
 						rows.put(j, row);
 				    	j++;
 					}
@@ -71,21 +73,10 @@ public class ExpenseInfoServlet extends HttpServlet {
 			else if("update".equals(action))
 			{
 				//Update record in database
-				String expno=request.getParameter("exno");
-				String exp=request.getParameter("exp");
-				String cost=request.getParameter("cost");
-				String Inclusive=request.getParameter("Inclusive");
-				ExpenseBo e=ex.get(Integer.parseInt(expno));
-				System.out.println("Old value "+e.getCost()+"  "+e.getDetail()+"   "+e.getInclusive());
-				System.out.println("New Value "+cost+"  "+exp+"   "+Inclusive);
-				boolean status=false;
-				if(Inclusive.equalsIgnoreCase("true")||Inclusive.equalsIgnoreCase("yes")||Inclusive.equalsIgnoreCase("1"))
-				{
-					status=true;
-				}
-				e.setDetail(exp);
-				e.setCost(cost);
-				e.setInclusive(status);
+				String cno=request.getParameter("cno");
+				String comment=request.getParameter("comment");
+				ex.remove(Integer.parseInt(cno));
+				ex.put(Integer.parseInt(cno), comment);
 				//Return result to jTable
 				HashMap<String,Object> jTableResult = new HashMap<String,Object>();
 				jTableResult.put("Result","OK");
@@ -96,8 +87,24 @@ public class ExpenseInfoServlet extends HttpServlet {
 			else if("delete".equals(action))
 			{
 				//Delete from database
-				String expno=request.getParameter("exno");
-				ex.remove(Integer.parseInt(expno)+1);
+				String cno=request.getParameter("cno");
+				ex.remove(Integer.parseInt(cno));
+				//Return result to jTable
+				HashMap<String,Object> jTableResult = new HashMap<String,Object>();
+				jTableResult.put("Result","OK");
+				JSONObject jb=new JSONObject(jTableResult);
+				out.println(jb);
+				
+			}
+			else if("insert".equals(action))
+			{
+				//INsert into database
+				String data=request.getParameter("data");
+				JSONParser jp=new JSONParser();
+				JSONObject jo=(JSONObject)jp.parse(data);
+				String comment=(String)jo.get("comment");
+				System.out.println(ex.size()+1+"    "+ comment);
+				ex.put(ex.size()+1, comment);
 				//Return result to jTable
 				HashMap<String,Object> jTableResult = new HashMap<String,Object>();
 				jTableResult.put("Result","OK");
@@ -122,5 +129,4 @@ public class ExpenseInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		processRequest(request, response);
 	}
-
 }

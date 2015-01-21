@@ -97,47 +97,7 @@ function getdetail() {
 		ajaxob.send();
 	}
 }
-function insertinvoice() {
-	var invoiceno = document.getElementById("invoiceno").value;
-	var sdate     =     document.getElementById("sdate").value;
-	var taxvalue  =  document.getElementById("taxvalue").value;
-	var total     =     document.getElementById("total").value;
-	var status="2";
-	if (invoiceno == "") {
-		status="1";
-		alert("insert invoice first");
-	} else if (sdate == "") {
-		status="1";
-		alert("Select A Invoice date");
-	} else if (taxvalue == "") {
-		status="1";
-		alert("TaxValue is not Valid");
-	} else if (total == "") {
-		status="1";
-		alert("provide valid total");
-	} 
-	if(status=="2") {
-		var jsonobject = {
-			'invoiceno' : invoiceno,
-			'pono' : pono,
-			'sdate' : sdate,
-			'taxvalue' : taxvalue,
-			'total' : total,
-		};
-		var ajaxob;
-		if (window.XMLHttpRequest) {
-			ajaxob = new XMLHttpRequest();
-		}
-		ajaxob.onreadystatechange = function() {
-			if (ajaxob.readyState == 4 && ajaxob.status == 200) {
-				value = ajaxob.responseText;
-			}
-		}
-		ajaxob.open("POST", "InvoicepreviewInsert?data="
-				+ JSON.stringify(jsonobject), true);
-		ajaxob.send();
-	}
-}
+
 function updateInvoice()
 {
 	var ajaxob;

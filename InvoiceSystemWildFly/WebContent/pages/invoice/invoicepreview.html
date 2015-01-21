@@ -1,21 +1,21 @@
-<div id="mainbody-invoice">
+<div id="mainbody_invoice">
 	<div id="line1">
-		<div id="line1-1"><label class="lbl">CompanyName</label><input type="text" ></div>
-		<div id="line1-2"><label class="lbl">Date</label><input type="Text"/></div>
+		<div id="line1-1"><label class="lbl">CompanyName</label><input type="text" id="ccompany"></div>
+		<div id="line1-2"><label class="lbl">Date</label><input type="Text" id="date"/></div>
 	</div>
 	<div id="line2">
-		<div id="line2-1"><label class="lbl">Company Slogan</label><img src="../../images/newLogo.jpg" id="img"> </div>
-		<div id="line2-2"><label class="lbl">Invoice No</label><input type="text"/> </div>
+		<div id="line2-1"><label class="lbl">Company Slogan</label><img src="images/newLogo.jpg" id="img"> </div>
+		<div id="line2-2"><label class="lbl">Invoice No</label><input type="text" id="invoiceno"/> </div>
 	</div>
 	<div id="line3">
 		<label class='lbl'>Address</label>
-		<textarea class="txtarea"></textarea>
+		<textarea class="txtarea" id="cadd"></textarea>
 	</div>
 	<div id="line4">
 		<label class="lbl">Phone</label>
-		<input type="text" class="myphone">
+		<input type="text" class="myphone" id="cphone">
 		<label class="lbl">Mob</label>
-		<input type="text" id="mymob">
+		<input type="text" id="cmob">
 	</div>
 	<div id="line5">
 		<label class="lbl">BILL TO</label>
@@ -26,11 +26,11 @@
 	</div>
 	<div id="line7">
 		<label class="lbl">Company Name</label>
-		<input type="text" />	
+		<input type="text" id="bcompany"/>	
 	</div>
 	<div id="line8">
 		<label class='lbl'>Address</label>
-		<textarea class="txtarea"></textarea>
+		<textarea class="txtarea" id="baddress"></textarea>
 	</div>
 	<div id="line9">
 		<label class="lbl">Phone</label>
@@ -42,7 +42,7 @@
 		<div id="line10">
 			<label class="lbl">Expenses</label>
 		</div>
-		<div id="expense-table">
+		<div id="expense-table" >
 			
 		</div>
 	</div>
@@ -51,29 +51,29 @@
 			<div>
 				<label class="lbl">Other Comments</label>
 			</div>
-			<div id="comments"></div>
-			<div id="commentbtn">
-				<button>Add Comments</button> 
+			<div id="comment">
+				
 			</div>
+			<div id='commentbtn'><button onclick='addComments()'>Add Comments</button></div>
 		</div>
 		<div id="line12-col2">
 			<div>
-				<label class="lbl">PO Total</label>
-				<input type="text"/>
+				<label class="lbl">Purchase Order</label>
+				<label class="currency"></label><input type="text" id="pototal"/>
 			</div>
 			<div>
-				<label class="lbl">PO Total</label>
-				<input type="text"/>
+				<label class="lbl">Tax Rate</label>
+				<label class="currency"></label><input type="text" id="tax rate" value="12.36"/>
 			</div>
 			<div>
-				<label class="lbl">PO Total</label>
-				<input type="text"/>
+				<label class="lbl">Tax</label>
+				<label class="currency"></label><input type="text" id="tax"/>
 			</div>
 			<hr/>
 			<hr/>
 			<div>
-				<label class="lbl">PO Total</label>
-				<input type="text"/>
+				<label class="lbl">Total</label>
+				<label class="currency"></label><input type="text" id="total"/>
 			</div>
 		</div>
 	</div>
@@ -87,6 +87,20 @@
 		</div>
 	</div>
 	<div id="line14">
-		<button>Print Invoice</button>
+		<button onclick="saveandprintInvoice()">save and Print Invoice</button>
+	</div>
+</div>
+<div class="popup" id="commentpopup">
+	<div>
+		<div class="tr">
+			<div style="float:left;">Comments</div>
+			<div>
+				<input type="text" id="commentsave" class="exp"
+					placeholder="Other Expensive" />
+			</div>
+			<div>
+				<button onclick="insertComment()">Add Comment</button>
+			</div>
+		</div>
 	</div>
 </div>

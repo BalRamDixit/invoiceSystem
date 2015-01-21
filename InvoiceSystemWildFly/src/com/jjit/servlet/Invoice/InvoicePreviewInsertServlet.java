@@ -46,8 +46,23 @@ public class InvoicePreviewInsertServlet extends HttpServlet {
 			PurchaseOrderBo purchasebo=(PurchaseOrderBo)request.getSession().getAttribute("purchaseOrder");
 			String uuid=purchasebo.getUuid();
 			HashMap<Integer, ExpenseBo> expenses=purchasebo.getExpenses();
-			 
-			
+			purchasebo.setInvoiceno(invoiceno);
+			purchasebo.setPurchaseorderno(pono);
+			purchasebo.setTax(taxvalue);
+			purchasebo.setTotal(total);
+			purchasebo.setPodate(sdate);
+			HashMap<String,String> row=new HashMap<String,String>();
+			row.put("total",purchasebo.getTotal());
+			row.put("pototal",purchasebo.getPototal());
+			row.put("tax",purchasebo.getTax()+"");
+			row.put("stextra",purchasebo.getStextra());
+			row.put("particular",purchasebo.getParticular());
+			row.put("paymentterms",purchasebo.getPaymentterms());
+			row.put("currency", purchasebo.getCurrency());
+			row.put("invoiceno", invoiceno);
+			row.put("sdate", sdate);
+			JSONObject send=new JSONObject(row);
+			out.println(send);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

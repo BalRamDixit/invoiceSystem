@@ -14,6 +14,42 @@ public class PurchaseOrderBo {
 	private String total;
 	private String actotal;
 	private String pototal;
+	private String invoiceno;
+	private String podate;
+	private String currency;
+	private HashMap<Integer,String> comments=new HashMap<Integer,String>();
+	public HashMap<Integer, String> getComments() {
+		return comments;
+	}
+
+	public void setComments(HashMap<Integer, String> comments) {
+		this.comments = comments;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public String getPodate() {
+		return podate;
+	}
+
+	public void setPodate(String podate) {
+		this.podate = podate;
+	}
+
+	public String getInvoiceno() {
+		return invoiceno;
+	}
+
+	public void setInvoiceno(String invoiceno) {
+		this.invoiceno = invoiceno;
+	}
+
 	private HashMap<Integer,ExpenseBo> expenses = new HashMap<Integer,ExpenseBo>();
 	public HashMap<Integer,ExpenseBo> getExpenses() {
 		return expenses;

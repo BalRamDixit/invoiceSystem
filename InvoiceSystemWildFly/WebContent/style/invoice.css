@@ -206,15 +206,12 @@
 
 
 
-//preview invoice Css
-
-#mainbody-invoice
+#mainbody_invoice
 {
 	background-color: lime;
 	width:80%;
 	margin-left: auto;
 	margin-right: auto;
-	height:700px;
 	padding-top:10px;
 	padding-left:10px;
 	padding-right:10px;
@@ -264,6 +261,7 @@
 {
 	height:25px;
 	width:25px;
+	margin-top:0px;
 }
 #line3
 {
@@ -274,7 +272,7 @@
 }
 .txtarea
 {
-	width: 336px; 
+	width: 342px; 
 	height: 70px;
 }
 #line4
@@ -330,7 +328,8 @@
 }
 #expense-table
 {
-	
+	margin-top:20px;
+	margin-bottom: 20px;
 }
 #line12
 {
@@ -342,7 +341,7 @@
 {
 	float: left;
 	height:116px;
-	width:70%;
+	width:65%;
 	background-color: white;
 }
 #commentbtn
@@ -355,7 +354,6 @@
 }
 #line13
 {
-	background-color: #004444;
 	margin-left: 5px;
 	margin-right: 5px;
 }
@@ -371,7 +369,6 @@
 }
 #line14
 {
-	background-color: #004444;
 	margin-left: 5px;
 	margin-right: 5px;
 }

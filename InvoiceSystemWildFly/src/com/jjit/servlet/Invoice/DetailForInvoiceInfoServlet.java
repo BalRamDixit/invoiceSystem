@@ -75,6 +75,7 @@ public class DetailForInvoiceInfoServlet extends HttpServlet {
 				pobean.setTotal(total);
 				pobean.setActotal(total);
 				pobean.setPototal(pototal);
+				pobean.setCurrency(currency);
 				request.getSession(true).setAttribute("purchaseOrder", pobean);
 				row.put("total",total);
 				row.put("pototal",pototal);
