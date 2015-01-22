@@ -12,7 +12,7 @@ public class ExpenseTypes {
 		String[] list=null;
 		FileReader reader=null;
 		try {
-			File f=new File("expenseType.properties");
+			File f=new File("..\\properties\\expenseType.properties");
 			System.out.println("File is --> "+f.getCanonicalPath()+"     "+f.exists());
 			reader=new FileReader("expenseType.properties");
 			Properties proerties=new Properties();

@@ -21,13 +21,13 @@ import com.itextpdf.text.pdf.PdfWriter;
  * Servlet implementation class PurchaseOrderPdf
  */
 @WebServlet("/PurchaseOrderPdf")
-public class PurchaseOrderPdf extends HttpServlet {
+public class PurchaseOrderPdfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PurchaseOrderPdf() {
+    public PurchaseOrderPdfServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

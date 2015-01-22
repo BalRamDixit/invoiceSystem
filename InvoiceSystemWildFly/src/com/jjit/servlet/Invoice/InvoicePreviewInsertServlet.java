@@ -53,6 +53,7 @@ public class InvoicePreviewInsertServlet extends HttpServlet {
 			purchasebo.setPodate(sdate);
 			HashMap<String,String> row=new HashMap<String,String>();
 			row.put("total",purchasebo.getTotal());
+			row.put("actotal", purchasebo.getActotal());
 			row.put("pototal",purchasebo.getPototal());
 			row.put("tax",purchasebo.getTax()+"");
 			row.put("stextra",purchasebo.getStextra());

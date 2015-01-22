@@ -1,10 +1,8 @@
 <div id="mainbody_invoice">
 	<div id="line1">
-		<div id="line1-1"><label class="lbl">CompanyName</label><input type="text" id="ccompany"></div>
 		<div id="line1-2"><label class="lbl">Date</label><input type="Text" id="date"/></div>
 	</div>
 	<div id="line2">
-		<div id="line2-1"><label class="lbl">Company Slogan</label><img src="images/newLogo.jpg" id="img"> </div>
 		<div id="line2-2"><label class="lbl">Invoice No</label><input type="text" id="invoiceno"/> </div>
 	</div>
 	<div id="line3">
@@ -17,8 +15,8 @@
 		<label class="lbl">Mob</label>
 		<input type="text" id="cmob">
 	</div>
-	<div id="line5">
-		<label class="lbl">BILL TO</label>
+	<div id="line5" class="heading">
+		<label class="lbl">Bill to</label>
 	</div>
 	<div id="line6">
 		<label class="lbl">Person Name</label>
@@ -39,7 +37,7 @@
 		<input type="text" id="mymob">
 	</div>
 	<div id="line11">
-		<div id="line10">
+		<div id="line10" class="heading">
 			<label class="lbl">Expenses</label>
 		</div>
 		<div id="expense-table" >
@@ -62,6 +60,10 @@
 				<label class="currency"></label><input type="text" id="pototal"/>
 			</div>
 			<div>
+				<label class="lbl">Purchase Order</label>
+				<label class="currency"></label><input type="text" id="actotal"/>
+			</div>
+			<div>
 				<label class="lbl">Tax Rate</label>
 				<label class="currency"></label><input type="text" id="tax rate" value="12.36"/>
 			</div>
@@ -79,7 +81,7 @@
 	</div>
 	<div id="line13">
 		<div id="line13-row1">
-			<label class="lbl">Make All Cheque Payble To</label>
+			<label class="lbl">Make all cheque payble to</label>
 		</div>
 		<div id="line13-row2">
 			<label class="lbl">Company Name</label>
@@ -87,7 +89,8 @@
 		</div>
 	</div>
 	<div id="line14">
-		<button onclick="saveandprintInvoice()">save and Print Invoice</button>
+		<button onclick="saveandprintInvoice()">Save And Print Invoice</button>
+		<button>Print DBNote</button>
 	</div>
 </div>
 <div class="popup" id="commentpopup">

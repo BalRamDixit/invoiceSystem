@@ -24,13 +24,13 @@ import com.jjit.dao.PurchaseOrderDao;
  * Servlet implementation class VendorListPdf
  */
 @WebServlet("/VendorListPdf")
-public class VendorListPdf extends HttpServlet {
+public class VendorListPdfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VendorListPdf() {
+    public VendorListPdfServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

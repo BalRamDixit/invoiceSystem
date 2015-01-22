@@ -118,7 +118,7 @@ function updateInvoice()
 }
 function addExpense()
 {
-	expenses.innerHTML="<div id=\"expense_list\">";
+	expenses.innerHTML="<div id=\"expense_list\"></div>";
 	$('#expense_list').jtable({
 		paging: true,
 		pageSize: 3,
@@ -161,9 +161,9 @@ function addExpense()
 }
 function insertExpense()
 {
-	var exp=document.getElementById("exp").value;
+	var exp =document.getElementById("exp").value;
 	var cost=document.getElementById("value").value;
-	var inc=document.getElementById("inclusive").value;
+	var inc =document.getElementById("inclusive").value;
 	var jsonobject = {
 			"exp":exp,
 			"val":cost,

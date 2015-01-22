@@ -54,7 +54,7 @@ public class CommentsInfoServlet extends HttpServlet {
 					{
 						String expense=ex.get(e);
 						HashMap<String,String> row=new HashMap<String,String>();
-						row.put("cno",(i+1)+"");
+						row.put("cno",e+"");
 						row.put("sno",(i+1)+"");
 						row.put("comment",ex.get(e));
 						
@@ -75,7 +75,6 @@ public class CommentsInfoServlet extends HttpServlet {
 				//Update record in database
 				String cno=request.getParameter("cno");
 				String comment=request.getParameter("comment");
-				ex.remove(Integer.parseInt(cno));
 				ex.put(Integer.parseInt(cno), comment);
 				//Return result to jTable
 				HashMap<String,Object> jTableResult = new HashMap<String,Object>();

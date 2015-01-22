@@ -108,6 +108,7 @@ function updateinvoicepreview(value)
 	document.getElementById("total").value=obj.total;
 	$('.currency').text(obj.currency);
 	document.getElementById("pototal").value=obj.pototal;
+	document.getElementById("actotal").value=obj.actotal;
 }
 function saveandprintInvoice()
 {
@@ -123,7 +124,7 @@ function insertComment()
 	$("#commentpopup").bPopup().close();
 	if(com=="")
 	{
-		alert("Comment should no be blank");
+		alert("Comment should not be blank");
 	}
 	else
 	{
@@ -149,7 +150,7 @@ function updateComment()
 	comment.innerHTML="<div id='comments'></div>";
 	$('#comments').jtable({
 		paging: true,
-		pageSize: 3,
+		pageSize: 1000,
 		sorting: true,
 		defaultSorting: 'exno ASC',
 		actions: {

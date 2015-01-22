@@ -22,13 +22,13 @@ import com.jjit.dao.InvoiceDao;
  * Servlet implementation class PurchaseOrderListPdf
  */
 @WebServlet("/PurchaseOrderListPdf")
-public class PurchaseOrderListPdf extends HttpServlet {
+public class PurchaseOrderListPdfServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PurchaseOrderListPdf() {
+    public PurchaseOrderListPdfServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
