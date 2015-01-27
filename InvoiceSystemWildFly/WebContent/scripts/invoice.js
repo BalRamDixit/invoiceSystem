@@ -89,6 +89,7 @@ function getdetail() {
 				{
 					stax.innerHTML=" INCLUDED";
 				}
+				addExpenseType();
 				addExpense();
 			}
 		}
@@ -185,6 +186,29 @@ function insertExpense()
 	}
 	ajaxob.open("POST", "InsertExpense?data="
 			+ JSON.stringify(jsonobject), true);
+	ajaxob.send();
+}
+function addExpenseType()
+{
+	var ajaxob;
+	if (window.XMLHttpRequest) {
+		ajaxob = new XMLHttpRequest();
+	}
+	ajaxob.onreadystatechange = function() {
+		if (ajaxob.readyState == 4 && ajaxob.status == 200) {
+			value = ajaxob.responseText;
+			var obj = JSON.parse(value);
+			var select = document.getElementById("etype");
+			select.innerHTML = "<option value=''>Select Expense Type</option>";
+			for (i = 0; i < obj.length; i++) {
+				var option = document.createElement("option");
+				option.text = obj[i].exptype;
+				option.value = obj[i].exptype;
+				select.appendChild(option);
+			}
+		}
+	}
+	ajaxob.open("POST", "ExpenseType", true);
 	ajaxob.send();
 }
 function openAddExpenseWindow()
